@@ -166,9 +166,9 @@
               <li><a href="product_grid_left_sidebar.html"><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a></li>
               <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
             </ul>
-            <h2>Pellentesque non risus quis tellus</h2>
-            <h3>149円</h3>
-            <p>Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus. Etiam aliquam turpis quis blandit finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor placerat lectus, facilisis ornare leo tincidunt vel. Duis rutrum felis felis, eget malesuada massa tincidunt a.</p>
+            <h2><%= @product.name %></h2>
+            <h3><%= "$ #{@product.price}" %></h3>
+            <p><%= @product.description %></p>
             <span class="quick-drop">
               <select name="guiest_id3" id="guiest_id3" class="select-drop">
                 <option value="0">S</option>
@@ -197,13 +197,14 @@
               </ul>
               <div class="tab-content">
                 <div id="details" class="tab-pane fade in active">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <ul class="list-unstyled">
-                    <li>Black, Crew Neck</li>
-                    <li>75% Cotton, 25% Rayon</li>
-                    <li>Waterbased Ink</li>
-                    <li>Wash Cold, dry low</li>
-                  </ul>
+                  <table>
+                      <% @product_properties.each do |product_property| %>
+                      <tr>
+                        <td class="detail_list"><strong><%= product_property.property.presentation %></strong></td>
+                        <td class="detail_list"><%= product_property.value %></td>
+                      </tr>
+                      <% end %>
+                  </table>
                 </div>
                 <div id="about-art" class="tab-pane fade">
                   <p>Nulla facilisi. Mauris efficitur, massa et iaculis accumsan, mauris velit ultrices purus, quis condimentum nibh dolor ut tortor. Donec egestas tortor quis mattis gravida. Ut efficitur elit vitae dignissim volutpat. </p>

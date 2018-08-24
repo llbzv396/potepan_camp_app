@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render 'layouts/head.html.erb' %>
+    <%= render 'layouts/head' %>
   </head>
   <body>
-    <%= render 'layouts/header.html.erb' %>
-    <%= yield %>
-    <%= render 'layouts/footer.html.erb' %>
-    <%= render 'layouts/copy_right.html.erb' %>
+    <div class="main-wrapper">
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= render 'layouts/copy_right' %>
+    </div>
+      <%= render 'layouts/modal' %>
     <!-- 開発環境のみデバッグ情報を表示する -->
     <%= debug(params) if Rails.env.development? %>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

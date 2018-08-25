@@ -2,13 +2,27 @@ require 'rails_helper'
 
 RSpec.describe Potepan::ProductsController, type: :controller do
 
-    let(:product) { create(:product) }
+    let(:product) { create(:base_product) }
 
     describe "showアクションに関するテスト" do
-      it "リクエストが成功し、レスポンスは成功しているか" do
-        get :show, params: { id: product.id}
-        expect(response).to have_http_status(:success)
+
+      it "正常にレスポンスを返すこと" do
+        get :show, params: { id: product.id }
+        expect(response).to be_success
       end
+
+      it "ステータスコードが200のレスポンスを返すこと" do
+        get :show, params: { id: product.id }
+        expect(response).to have_http_status "200"
+      end
+
+      it "showアクション内の'@product'と作成した'product'が等しいか " do
+        get :show, params: { id: product.id }
+        puts assigns(:product).name
+        puts product.name
+        expect(assigns(:product)).to eq product
+      end
+
     end
 
 end

@@ -1,5 +1,5 @@
 <!-- SITE TITTLE -->
-<% provide(:title, "Product Grid Sidebar Left") %>
+<% provide(:title, @taxons.name) %>
 
 <!-- LIGHT SECTION -->
 <section class="lightSection clearfix pageHeader">
@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <h2>Category name</h2>
+          <h2><%= @taxons.permalink %></h2>
         </div>
       </div>
       <div class="col-xs-6">
@@ -18,7 +18,7 @@
           <li>
             <a href="#">shop</a>
           </li>
-          <li class="active">Category name</li>
+          <li class="active"><%= link_to @taxons.name, potepan_category_path(@taxons.id) %></li>
         </ol>
       </div>
     </div>
@@ -31,46 +31,28 @@
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
         <div class="panel panel-default">
-          <div class="panel-heading">商品カテゴリー</div>
+          <div class="panel-heading">CATEGORIES & BRANDS</div>
           <div class="panel-body">
             <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
               <ul class="nav navbar-nav side-nav">
+                <% @taxonomies.each do |taxonomy| %>
                 <li>
-                  <a href="javascript:;" data-toggle="collapse" data-target="#women">レディース<i class="fa fa-plus"></i></a>
-                  <ul id="women" class="collapse collapseItem">
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>トップス <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>アウター <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>ボトムス <span>(25)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>靴 <span>(2)</span></a></li>
+                  <a href="javascript:;" data-toggle="collapse" data-target="#<%= taxonomy.id %>">
+                    <%= taxonomy.name %><i class="fa fa-plus"></i></a>
+                  <ul id="<%= taxonomy.id %>" class="collapse collapseItem">
+                    <% taxonomy.root.children.each do |taxon| %>
+                    <% if taxon.taxonomy_id == taxonomy.id %>
+                    <li>
+                      <%= link_to potepan_category_path(taxon.id) do %>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        <%= taxon.name %>
+                      <% end %>
+                    </li>
+                    <% end %>
+                    <% end %>
                   </ul>
                 </li>
-                <li>
-                  <a href="javascript:;" data-toggle="collapse" data-target="#men">メンズ<i class="fa fa-plus"></i></a>
-                  <ul id="men" class="collapse collapseItem">
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>トップス <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>アウター <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>ボトムス <span>(25)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>靴 <span>(2)</span></a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="javascript:;" data-toggle="collapse" data-target="#kids">キッズ<i class="fa fa-plus"></i></a>
-                  <ul id="kids" class="collapse collapseItem">
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>トップス <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>アウター <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>ボトムス <span>(25)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>靴 <span>(2)</span></a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="javascript:;" data-toggle="collapse" data-target="#accessories">アクセサリー<i class="fa fa-plus"></i></a>
-                  <ul id="accessories" class="collapse collapseItem">
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>モバイルケース・アクセサリー <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>財布・革小物 <span>(6)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>腕時計 <span>(25)</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>帽子 <span>(2)</span></a></li>
-                  </ul>
-                </li>
+                <% end %>
               </ul>
             </div>
           </div>

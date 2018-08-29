@@ -18,8 +18,6 @@ RSpec.describe Potepan::ProductsController, type: :controller do
 
       it "showアクション内の'@product'と作成した'product'が等しいか " do
         get :show, params: { id: product.id }
-        puts assigns(:product).name
-        puts product.name
         expect(assigns(:product)).to eq product
       end
 

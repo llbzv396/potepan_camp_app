@@ -33,9 +33,9 @@
               <div class="carousel-inner">
                 <!-- 画像を表示 -->
                 <% @product_images.each.with_index do |img, i| %>
-                    <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
-                      <%= image_tag img.attachment.url(:large)  %>
-                    </div>
+                <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
+                  <%= image_tag img.attachment.url(:large)  %>
+                </div>
                 <% end %>
               </div>
             </div>
@@ -44,9 +44,9 @@
                 <div class="carousel-inner">
                   <!-- メイン画像下部のインジケータ用 -->
                   <% @product_images.each.with_index do |img, i| %>
-                    <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
-                      <%= image_tag img.attachment.url %>
-                    </div>
+                  <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
+                    <%= image_tag img.attachment.url(:small) %>
+                  </div>
                   <% end %>
                 </div>
                 <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
@@ -96,12 +96,12 @@
               <div class="tab-content">
                 <div id="details" class="tab-pane fade in active">
                   <table>
-                      <% @product_properties.each do |product_property| %>
-                      <tr>
-                        <td class="detail_list"><strong><%= product_property.property.presentation %></strong></td>
-                        <td class="detail_list"><%= product_property.value %></td>
-                      </tr>
-                      <% end %>
+                    <% @product_properties.each do |product_property| %>
+                    <tr>
+                      <td class="detail_list"><strong><%= product_property.property.presentation %></strong></td>
+                      <td class="detail_list"><%= product_property.value %></td>
+                    </tr>
+                    <% end %>
                   </table>
                 </div>
                 <div id="about-art" class="tab-pane fade">

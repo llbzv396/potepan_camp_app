@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Potepan::CategoriesController, type: :controller do
-
   let(:taxon) { create(:taxon) }
   let(:taxonomy) { create(:taxonomy) }
 
   describe "showアクションに関するテスト" do
-
     it "正常にレスポンスを返すこと" do
       get :show, params: { id: taxon.id }
       expect(response).to be_success
@@ -23,7 +21,5 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
       puts taxon.name
       expect(assigns(:taxons)).to eq taxon
     end
-
   end
-
 end

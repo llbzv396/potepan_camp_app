@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/'
 
   namespace :potepan do
-    resources :products,   only: [:show]
+    resources :products,   only: [:index, :show]
     resources :categories, only: [:show]
-    get '/',                        to: 'sample#index'
-    get '/index',                   to: 'sample#index'
+    get :/,                         to: 'products#index'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'
     get :product_list_left_sidebar, to: 'sample#product_list_left_sidebar'
     get :cart_page,                 to: 'sample#cart_page'

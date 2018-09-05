@@ -1,5 +1,7 @@
 class Potepan::ProductsController < ApplicationController
   def index
+    @new_products = Spree::Product.order(available_on: :desc).
+    limit(5).includes(master: [:default_price, :images])
   end
 
   def show

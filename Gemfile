@@ -47,6 +47,10 @@ group :development, :test do
   gem 'annotate'
 end
 
+group :test do
+  gem 'capybara', '~> 2.15.2'
+end
+
 group :development do
   gem 'rubocop-airbnb'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

@@ -1,0 +1,93 @@
+<div class="row singleProduct">
+  <div class="col-xs-12">
+    <div class="media">
+      <div class="media-left productSlider">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% @product_images.each.with_index do |img, i| %>
+            <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
+              <%= image_tag img.attachment.url(:large)  %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div id="thumbcarousel" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+              <% @product_images.each.with_index do |img, i| %>
+              <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
+                <%= image_tag img.attachment.url(:small) %>
+              </div>
+              <% end %>
+            </div>
+            <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="media-body">
+        <ul class="list-inline">
+          <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
+          <li><i class="fa fa-reply" aria-hidden="true"> Return to list</i></li>
+          <% end %>
+          <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
+        </ul>
+        <h2><%= @product.name %></h2>
+        <h3><%= @product.display_price %></h3>
+        <p><%= @product.description %></p>
+        <span class="quick-drop">
+          <select name="guiest_id3" id="guiest_id3" class="select-drop">
+            <option value="0">S</option>
+            <option value="1">M</option>
+            <option value="2">L</option>
+            <option value="3">XL</option>
+          </select>
+        </span>
+        <span class="quick-drop resizeWidth">
+          <select name="guiest_id4" id="guiest_id4" class="select-drop">
+            <!--   <option value="0">Qty</option> -->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </span>
+        <div class="btn-area">
+          <a href="cart_page.html" class="btn btn-primary btn-block">カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="tabArea">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#details">details</a></li>
+            <li><a data-toggle="tab" href="#about-art">about art</a></li>
+            <li><a data-toggle="tab" href="#sizing">sizing</a></li>
+            <li><a data-toggle="tab" href="#shipping">shipping</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="details" class="tab-pane fade in active">
+              <table>
+                <% @product_properties.each do |product_property| %>
+                <tr>
+                  <td class="detail_list"><strong><%= product_property.property.presentation %></strong></td>
+                  <td class="detail_list"><%= product_property.value %></td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
+            <div id="about-art" class="tab-pane fade">
+              <p>Nulla facilisi. Mauris efficitur, massa et iaculis accumsan, mauris velit ultrices purus, quis condimentum nibh dolor ut tortor. Donec egestas tortor quis mattis gravida. Ut efficitur elit vitae dignissim volutpat. </p>
+            </div>
+            <div id="sizing" class="tab-pane fade">
+              <p>Praesent dui felis, gravida a auctor at, facilisis commodo ipsum. Cras eu faucibus justo. Nullam varius cursus nisi, sed elementum sem sagittis at. Nulla tellus massa, vestibulum a commodo facilisis, pulvinar convallis nunc.</p>
+            </div>
+            <div id="shipping" class="tab-pane fade">
+              <p>Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

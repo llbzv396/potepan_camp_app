@@ -16,7 +16,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
       expect(response).to have_http_status "200"
     end
 
-    it "showアクション内の'@product'と作成した'product'が等しいか " do      
+    it "showアクション内の'@product'と作成した'product'が等しいか" do
       expect(assigns(:product)).to eq product
     end
   end

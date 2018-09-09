@@ -1,9 +1,4 @@
 class Potepan::ProductsController < ApplicationController
-  def index
-    @new_products = Spree::Product.including_images_prices.
-      order(available_on: :desc).limit(5)
-  end
-
   def show
     @product = Spree::Product.friendly.find(params[:id])
     @product_properties = @product.product_properties.includes(:property)

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/'
 
   namespace :potepan do
-    resources :products,   only: [:index, :show]
+    resources :products,   only: [:show]
     resources :categories, only: [:show]
     get :/,                         to: 'home#index'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'

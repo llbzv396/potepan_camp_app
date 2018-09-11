@@ -17,11 +17,11 @@ RSpec.describe Potepan::HomeController, type: :controller do
     end
 
     it "新着商品が5個表示されていること" do
-      expect(assigns(:new_products).count).to eq(5)
+      expect(assigns(:lated_products).count).to eq(5)
     end
 
     it "indexアクション内の'@new_products'と作成した'lated_products'が等しいか" do
-      expect(assigns(:new_products)).to match_array lated_products
+      expect(assigns(:lated_products)).to match_array lated_products
     end
   end
 end

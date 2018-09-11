@@ -1,6 +1,6 @@
 <div class="slide">
   <div class="productImage clearfix">
-    <%= image_tag new_product.display_image.attachment.url(:product) , :alt => new_product.name %>
+    <%= image_tag lated_product.display_image.attachment.url(:product) , :alt => lated_product.name %>
     <div class="productMasking">
       <ul class="list-inline btn-group" role="group">
         <li><a data-toggle="modal" href=".login-modal" class="btn btn-default"><i class="fa fa-heart"></i></a></li>
@@ -10,9 +10,9 @@
     </div>
   </div>
   <div class="productCaption clearfix">
-    <%= link_to potepan_product_path(new_product) do %>
-      <h5><%= new_product.name %></h5>
+    <%= link_to potepan_product_path(lated_product) do %>
+      <h5><%= lated_product.name %></h5>
     <% end %>
-    <h3><%= new_product.display_price %></h3>
+    <h3><%= lated_product.display_price %></h3>
   </div>
 </div>

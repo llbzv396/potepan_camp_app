@@ -20,7 +20,7 @@ RSpec.describe Potepan::HomeController, type: :controller do
       expect(assigns(:lated_products).count).to eq(5)
     end
 
-    it "indexアクション内の'@new_products'と作成した'lated_products'が等しいか" do
+    it "indexアクション内の'@lated_products'と作成した'lated_products'が等しいか" do
       expect(assigns(:lated_products)).to match_array lated_products
     end
   end

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper do
-  include ApplicationHelper
-  let(:page_title) { 'Ruby on Rails' }
-
+RSpec.describe ApplicationHelper, type: :helper do
   describe "full_titleメソッドに関するテスト" do
     context "page_titleが空の場合" do
+      let(:page_title) { '' }
+
       it "full_titleが[BIGBAG Store]となる事" do
         page_title = ''
         expect(full_title(page_title)).to eq "BIGBAG Store"
@@ -13,6 +12,8 @@ RSpec.describe ApplicationHelper do
     end
 
     context "page_titleがRuby on Railsの場合" do
+      let(:page_title) { 'Ruby on Rails' }
+
       it "full_titleが[Ruby on Rails - BIGBAG Store]となる事" do
         expect(full_title(page_title)).to eq "Ruby on Rails - BIGBAG Store"
       end

@@ -6,12 +6,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
   describe "showアクションに関するテスト" do
     it "正常にレスポンスを返すこと" do
       get :show, params: { id: product.id }
-      expect(response).to be_success
-    end
-
-    it "ステータスコードが200のレスポンスを返すこと" do
-      get :show, params: { id: product.id }
-      expect(response).to have_http_status "200"
+      expect(response).to have_http_status(:ok)
     end
 
     it "showアクション内の'@product'と作成した'product'が等しいか " do

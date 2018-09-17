@@ -1,0 +1,10 @@
+<div class="panel panel-default filterNormal">
+  <div class="panel-heading">FILTER BY COLOR</div>
+  <div class="panel-body">
+    <ul class="list-unstyled">
+      <% @options.find(2).option_values.each do |color_option| %>
+      <li><a href="#"><%= color_option.presentation %><span>(<%= @options.find(2).products.count %>)</span></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

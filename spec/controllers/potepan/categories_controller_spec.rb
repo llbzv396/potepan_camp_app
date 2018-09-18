@@ -10,7 +10,7 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
 
   describe "showアクションに関するテスト" do
     it "正常にレスポンスを返すこと" do
-      expect(response). to have_http_status(:ok)
+      expect(response).to have_http_status(:ok)
     end
 
     it "showアクション内の'@taxons'と作成した'taxon'が等しいか" do

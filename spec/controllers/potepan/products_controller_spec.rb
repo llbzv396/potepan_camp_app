@@ -11,11 +11,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
 
   describe "showアクションに関するテスト" do
     it "正常にレスポンスを返すこと" do
-      expect(response).to be_success
-    end
-
-    it "ステータスコードが200のレスポンスを返すこと" do
-      expect(response).to have_http_status "200"
+      expect(response).to have_http_status(:ok)
     end
 
     describe "single_product.html.erbに関するテスト" do

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get :/,                         to: 'home#index'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'
     get :product_list_left_sidebar, to: 'sample#product_list_left_sidebar'
+    get :single_product,            to: 'sample#single_product'
     get :cart_page,                 to: 'sample#cart_page'
     get :checkout_step_1,           to: 'sample#checkout_step_1'
     get :checkout_step_2,           to: 'sample#checkout_step_2'

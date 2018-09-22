@@ -5,7 +5,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "page_titleが空の場合" do
       let(:page_title) { '' }
 
-      it "full_titleが[BIGBAG Store]となる事" do        
+      it "full_titleが[BIGBAG Store]となる事" do
         expect(full_title(page_title)).to eq "BIGBAG Store"
       end
     end

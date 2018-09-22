@@ -44,7 +44,7 @@ RSpec.feature "Categories", type: :feature do
     expect(page).to have_current_path(potepan_category_path(child_taxon1.id))
   end
 
-  scenario "商品の詳細ページへのリンクをクリックする" do    
+  scenario "商品の詳細ページへのリンクをクリックする" do
     click_on "#{product1.name}"
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price

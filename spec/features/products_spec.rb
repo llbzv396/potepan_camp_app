@@ -17,7 +17,7 @@ RSpec.feature "Products", type: :feature do
     expect(page).to have_content "Return to list"
   end
 
-  scenario "return to listをクリックする" do    
+  scenario "return to listをクリックする" do
     click_on "Return to list"
     expect(page).to have_content root_taxon.name
     expect(page).to have_content taxonomy.name

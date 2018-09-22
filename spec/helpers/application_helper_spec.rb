@@ -6,7 +6,6 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:page_title) { '' }
 
       it "full_titleが[BIGBAG Store]となる事" do
-        page_title = ''
         expect(full_title(page_title)).to eq "BIGBAG Store"
       end
     end

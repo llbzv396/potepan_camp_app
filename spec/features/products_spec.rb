@@ -12,6 +12,13 @@ RSpec.feature "Products", type: :feature do
     visit potepan_product_path(product)
   end
 
+  scenario "商品に関する情報が表示されているか" do
+    expect(page).to have_content product.name
+    expect(page).to have_content product.price
+    expect(page).to have_content product.description
+    expect(page).to have_content "Return to list"
+  end
+
   scenario "return to listをクリックする" do
     click_on "Return to list"
     expect(page).to have_content root_taxon.name

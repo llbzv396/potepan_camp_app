@@ -24,7 +24,7 @@ RSpec.feature "Categories", type: :feature do
     visit potepan_category_path(root_taxon.id)
   end
 
-  scenario "categories/show に表示されている商品一覧を確認する" do
+  scenario "root_taxonに属する商品一覧が表示されているか" do
     expect(page).to have_content root_taxon.name
     expect(page).to have_content taxonomy.name
     expect(page).to have_content child_taxon1.name
@@ -33,7 +33,7 @@ RSpec.feature "Categories", type: :feature do
     expect(page).to have_content product2.name
   end
 
-  scenario "categories/show のサイドバーのリンクを確認する" do
+  scenario "カテゴリーで絞り込む" do
     click_on "#{child_taxon1.name}"
     expect(page).to have_content root_taxon.permalink
     expect(page).to have_content taxonomy.name
@@ -44,7 +44,7 @@ RSpec.feature "Categories", type: :feature do
     expect(page).to have_current_path(potepan_category_path(child_taxon1.id))
   end
 
-  scenario "categories/show に表示されている商品ページのリンクをクリックする" do
+  scenario "商品の詳細ページへのリンクをクリックする" do
     click_on "#{product1.name}"
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price

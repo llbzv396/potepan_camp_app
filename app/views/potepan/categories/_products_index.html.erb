@@ -17,6 +17,8 @@
     </div>
   </div>
   <div class="row">
-    <%= render partial: 'product', collection: @products %>
+    <div class="col-sm-4 col-xs-12">
+      <%= render partial: 'shared/product', collection: @products, as: :object %>
+    </div>
   </div>
 </div>

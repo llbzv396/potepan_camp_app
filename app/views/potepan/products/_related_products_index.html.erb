@@ -4,5 +4,7 @@
       <h4>RELATED PRODUCTS</h4>
     </div>
   </div>
-  <%= render partial: 'related_product', collection: @related_products %>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <%= render partial: 'shared/product', collection: @related_products, as: :object %>
+  </div>
 </div>

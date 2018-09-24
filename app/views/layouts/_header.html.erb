@@ -80,8 +80,9 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/potepan">Home</a></li>
-          <li class="dropdown megaDropMenu active">
+          <li class="dropdown megaDropMenu <%= params[:controller] == "potepan/home" ? "active" : "" %>">
+            <%= link_to "Home", potepan_path %></li>
+          <li class="dropdown megaDropMenu <%= params[:controller] != "potepan/home" ? "active" : "" %>">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">Shop</a>
             <ul class="dropdown-menu row">
               <li class="col-sm-3 col-xs-12">
@@ -119,7 +120,7 @@
               </li>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown megaDropMenu <%= params[:controller]=="" ? "active" : "" %>">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages</a>
             <ul class="dropdown-menu dropdown-menu-left">
               <li><a href="about_us.html">About Us</a></li>
@@ -133,7 +134,7 @@
               <li><a href="coming-soon.html">Coming Soon</a></li>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown megaDropMenu <%= params[:controller]=="" ? "active" : "" %>">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog</a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="blog_right_sidebar.html">Right Sidebar</a></li>
@@ -144,7 +145,7 @@
               <li><a href="blog_single_left_sidebar.html">Single Left Sidebar</a></li>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown megaDropMenu <%= params[:controller]=="" ? "active" : "" %>">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="account-dashboard.html">Dashboard</a></li>

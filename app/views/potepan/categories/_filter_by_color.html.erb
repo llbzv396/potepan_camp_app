@@ -3,7 +3,8 @@
   <div class="panel-body">
     <ul class="list-unstyled">
       <% @options.find(2).option_values.each do |color_option| %>
-      <li><a href="#"><%= color_option.presentation %><span>(<%= @options.find(2).products.count %>)</span></a></li>
+      <li><a href="?type=2&color=<%= color_option.id %>"><%= color_option.presentation %>
+        <span>(<%= products_count_filtered_by_color(color_option.name, 2) %>)</span></a></li>
       <% end %>
     </ul>
   </div>

@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <h2><%= @taxon.permalink %></h2>
+          <h2>
+            <%= @taxon.name %>
+            <%= "/ #{option_value(params[:color]).name}" if params[:color].present? %>
+          </h2>
         </div>
       </div>
       <div class="col-xs-6">
@@ -14,7 +17,10 @@
           <li>
             <a href="#">shop</a>
           </li>
-          <li class="active"><%= link_to @taxon.name, potepan_category_path(@taxon.id) %></li>
+          <li class="active">
+            <%= @taxon.name %>
+            <%= "/ #{option_value(params[:color]).name}" if params[:color].present? %>
+          </li>
         </ol>
       </div>
     </div>

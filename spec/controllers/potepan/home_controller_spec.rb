@@ -9,11 +9,7 @@ RSpec.describe Potepan::HomeController, type: :controller do
     end
 
     it "正常にレスポンスを返すこと" do
-      expect(response).to be_success
-    end
-
-    it "ステータスコードが200のレスポンスを返すこと" do
-      expect(response).to have_http_status "200"
+      expect(response).to have_http_status(:ok)
     end
 
     it "新着商品が5個表示されていること" do

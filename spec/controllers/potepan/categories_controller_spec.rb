@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Potepan::CategoriesController, type: :controller do
   let(:taxon) { create(:taxon) }
-  let(:products) do
-    create_list(:product, 10) do |product|
-      product.taxons << taxon
-    end
-  end
+  let(:products) { create_list(:product, 10, taxons: [taxon]) }
 
   before do
     get :show, params: { id: taxon.id }
@@ -14,11 +10,7 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
 
   describe "showアクションに関するテスト" do
     it "正常にレスポンスを返すこと" do
-      expect(response).to be_success
-    end
-
-    it "ステータスコードが200のレスポンスを返すこと" do
-      expect(response). to have_http_status "200"
+      expect(response).to have_http_status(:ok)
     end
 
     it "showアクション内の'@taxons'と作成した'taxon'が等しいか" do

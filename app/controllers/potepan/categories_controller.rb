@@ -27,8 +27,7 @@ class Potepan::CategoriesController < ApplicationController
 
   def products_count_filtered_by_color(value, type)
     Spree::Product.
-    in_taxon(@taxon).
-    filter_by_color(value, type).ids.uniq.count
+      in_taxon(@taxon).
+      filter_by_color(value, type).ids.uniq.count
   end
-
 end

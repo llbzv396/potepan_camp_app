@@ -20,12 +20,12 @@ RSpec.feature "Categories", type: :feature do
                    name: "child_taxon2")
   end
   let!(:product1) do
-    create(:product, price: 20,
+    create(:product, price: 20.92,
                      description: "This is a product1",
                      taxons: [root_taxon, child_taxon1])
   end
   let!(:product2) do
-    create(:product, price: 15,
+    create(:product, price: 15.24,
                      taxons: [root_taxon, child_taxon2])
   end
 

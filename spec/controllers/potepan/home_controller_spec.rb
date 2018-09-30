@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Potepan::HomeController, type: :controller do
   describe "indexアクションに関するテスト" do
-    let!(:lated_products) { create_list(:base_product, 5) }
+    let!(:lated_products) { create_list(:product, 5) }
 
     before do
       get :index

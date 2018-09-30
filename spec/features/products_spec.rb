@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature "Products", type: :feature do
   let(:taxonomy) { create(:taxonomy) }
   let(:root_taxon) { create(:taxon) }
-  let(:child_taxon) { create(:taxon, parent_id: root_taxon.id) }
-  let(:product) { create(:base_product, taxons: [root_taxon, child_taxon]) }
+  let(:child_taxon) { create(:taxon, parent_id: root_taxon.id) }  
   let!(:related_product1) { create(:base_product, taxons: [root_taxon, child_taxon]) }
   let!(:related_product2) { create(:base_product, taxons: [root_taxon, child_taxon]) }
+  let(:product) { create(:product, taxons: [root_taxon, child_taxon]) }
 
   before do
     visit potepan_product_path(product)
@@ -21,10 +21,12 @@ RSpec.feature "Products", type: :feature do
 
   scenario "return to listをクリックする" do
     click_on "Return to list"
-    expect(page).to have_content root_taxon.name
+    expect(page).to have_content root_taxon.permalink
     expect(page).to have_content taxonomy.name
+    expect(page).to have_content root_taxon.name
     expect(page).to have_content child_taxon.name
     expect(page).to have_content product.name
+    expect(page).to have_content product.price
     expect(page).to have_current_path(potepan_category_path(root_taxon.id))
   end
 

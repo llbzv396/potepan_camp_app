@@ -4,13 +4,11 @@ RSpec.feature "Categories", type: :feature do
   let(:taxonomy) { create(:taxonomy) }
   let(:root_taxon) do
     create(:taxon, taxonomy_id: taxonomy.id,
-                   permalink: "permalink",
                    id: 1,
                    parent_id: nil)
   end
   let!(:child_taxon1) do
     create(:taxon, taxonomy_id: taxonomy.id,
-                   permalink: "root_taxon/child_taxon1",
                    parent_id: root_taxon.id,
                    name: "child_taxon1")
   end
@@ -20,12 +18,12 @@ RSpec.feature "Categories", type: :feature do
                    name: "child_taxon2")
   end
   let!(:product1) do
-    create(:product, price: 20,
+    create(:product, price: 20.95,
                      description: "This is a product1",
                      taxons: [root_taxon, child_taxon1])
   end
   let!(:product2) do
-    create(:product, price: 15,
+    create(:product, price: 15.34,
                      taxons: [root_taxon, child_taxon2])
   end
 
@@ -34,11 +32,11 @@ RSpec.feature "Categories", type: :feature do
   end
 
   scenario "root_taxonに属する商品一覧が表示されているか" do
-    expect(page).to have_content root_taxon.name
     expect(page).to have_content taxonomy.name
+    expect(page).to have_content root_taxon.name
+    expect(page).to have_content root_taxon.permalink
     expect(page).to have_content child_taxon1.name
     expect(page).to have_content child_taxon2.name
-    expect(page).to have_content root_taxon.permalink
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price
     expect(page).to have_content product2.name
@@ -46,7 +44,7 @@ RSpec.feature "Categories", type: :feature do
   end
 
   scenario "カテゴリーで絞り込む" do
-    click_on "#{child_taxon1.name}"
+    click_on "#{child_taxon1.name}"    
     expect(page).to have_content child_taxon1.permalink
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price

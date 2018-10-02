@@ -7,7 +7,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
   let(:product) do
     create(:product, product_properties: [product_property], taxons: [taxon])
   end
-  let(:related_products) do
+  let!(:related_products) do
     create_list(:product, 4, product_properties: [product_property], taxons: [taxon])
   end
 
@@ -30,6 +30,10 @@ RSpec.describe Potepan::ProductsController, type: :controller do
 
     it "@related_productsは適切な情報を持つか" do
       expect(assigns(:related_products)).to eq related_products
+    end
+
+    it "@related_productsの数は4個か" do
+      expect(assigns(:related_products).count).to eq 4
     end
 
     it "@product_propertiesは適切な情報を持つか" do

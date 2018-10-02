@@ -18,19 +18,6 @@ Bundler.require(*Rails.groups)
 
 module Potepanec
   class Application < Rails::Application
-    
-    config.to_prepare do
-      # Load application's model / class decorators
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
-
-      # Load application's view overrides
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
-    end
-
 
     config.to_prepare do
       # Load application's model / class decorators
@@ -48,11 +35,18 @@ module Potepanec
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.generators do |g|
+      g.javascript false
+      g.stylesheets false
+      g.helper false
+      g.system_tests false
+      g.test_framework :rspec,
+       fixtures: false,
+       view_specs: false,
+       helper_specs: false,
+       routing_specs: false
+    end
+
     config.time_zone = 'Tokyo'
-    config.generators.test_framework = :rspec
-    config.generators.system_tests   = false
-    config.generators.stylesheets    = false
-    config.generators.javascripts    = false
-    config.generators.helper         = false
   end
 end

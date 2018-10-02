@@ -37,6 +37,7 @@ gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n', branch: 'master'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
@@ -47,6 +48,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop-airbnb'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

@@ -1,0 +1,17 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/*'
+    - 'lib/tasks/_force_reload.rake'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Airbnb/OptArgParameters:
+  Enabled: false

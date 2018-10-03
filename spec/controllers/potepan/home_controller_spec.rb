@@ -11,7 +11,6 @@ RSpec.describe Potepan::HomeController, type: :controller do
     let!(:product7) { create(:product, available_on: 7.month.ago) }
     let!(:product8) { create(:product, available_on: 8.month.ago) }
     let!(:product9) { create(:product, available_on: 9.month.ago) }
-    let!(:COUNT_OF_LATED_PRODUCTS) { 8 }
     let(:lated_products) do
       [product1, product2, product3, product4, product5, product6, product7, product8]
     end

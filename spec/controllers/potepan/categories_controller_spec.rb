@@ -22,7 +22,7 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
     end
 
     it "@productsは適切な情報を持つか" do
-      expect(assigns(:products)).to eq products
+      expect(assigns(:products)).to match_array(products)
     end
   end
 end

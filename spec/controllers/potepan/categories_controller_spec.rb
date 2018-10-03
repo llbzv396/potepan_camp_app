@@ -13,12 +13,16 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
-    it "showアクション内の'@taxons'と作成した'taxon'が等しいか" do
+    it "適切なテンプレートが表示されているか" do
+      expect(response).to render_template(:show)
+    end
+
+    it "@taxonsは適切な情報を持つか" do
       expect(assigns(:taxon)).to eq taxon
     end
 
-    it "showアクション内の'@products'と作成した'products'が等しいか" do
-      expect(assigns(:products)).to eq products
+    it "@productsは適切な情報を持つか" do
+      expect(assigns(:products)).to match_array(products)
     end
   end
 end

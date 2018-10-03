@@ -29,7 +29,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
     end
 
     it "@related_productsは適切な情報を持つか" do
-      expect(assigns(:related_products)).to eq related_products
+      expect(assigns(:related_products)).to match_array(related_products)
     end
 
     it "@related_productsの数は4個か" do

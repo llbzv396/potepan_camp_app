@@ -1,10 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature "Products", type: :feature do
-  let(:taxonomy) { create(:taxonomy) }
-  let(:root_taxon) { create(:taxon) }
-  let(:child_taxon) { create(:taxon, parent_id: root_taxon.id) }
-  let(:product) { create(:product, taxons: [root_taxon, child_taxon]) }
+  let(:taxonomy) { create(:taxonomy, taxons: [root_taxon]) }
+  let!(:root_taxon) { create(:taxon, name: "root_taxon") }
+  let!(:child_taxon) do
+    create(:taxon, taxonomy_id: taxonomy.id,
+                   parent_id: root_taxon.id,
+                   name: "child_taxon")
+  end
+  let!(:product) do
+    create(:product, price: 20.95,
+                     description: "This is a product1",
+                     taxons: [root_taxon, child_taxon])
+  end
 
   before do
     visit potepan_product_path(product)
@@ -21,7 +29,6 @@ RSpec.feature "Products", type: :feature do
     click_on "Return to list"
     expect(page).to have_content root_taxon.permalink
     expect(page).to have_content taxonomy.name
-    expect(page).to have_content root_taxon.name
     expect(page).to have_content child_taxon.name
     expect(page).to have_content product.name
     expect(page).to have_content product.price

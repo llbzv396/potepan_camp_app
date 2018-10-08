@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "Products", type: :feature do
-  let(:taxonomy) { create(:taxonomy) }
-  let(:root_taxon) { create(:taxon) }
-  let(:child_taxon) { create(:taxon, parent_id: root_taxon.id) }
+  let(:taxonomy) { create(:taxonomy, taxons: [root_taxon]) }
+  let!(:root_taxon) { create(:taxon, name: "root_taxon") }
+  let!(:child_taxon) do
+    create(:taxon, taxonomy_id: taxonomy.id,
+                   parent_id: root_taxon.id,
+                   name: "child_taxon")
+  end
   let(:basis_product) do
     create(:product, name: "basis_product",
                      price: 20.75,
@@ -50,7 +54,6 @@ RSpec.feature "Products", type: :feature do
     click_on "Return to list"
     expect(page).to have_content root_taxon.permalink
     expect(page).to have_content taxonomy.name
-    expect(page).to have_content root_taxon.name
     expect(page).to have_content child_taxon.name
     expect(page).to have_content basis_product.name
     expect(page).to have_content basis_product.price

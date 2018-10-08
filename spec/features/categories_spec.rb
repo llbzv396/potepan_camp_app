@@ -1,12 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "Categories", type: :feature do
-  let(:taxonomy) { create(:taxonomy) }
-  let(:root_taxon) do
-    create(:taxon, taxonomy_id: taxonomy.id,
-                   id: 1,
-                   parent_id: nil)
-  end
+  let(:taxonomy) { create(:taxonomy, taxons: [root_taxon]) }
+  let!(:root_taxon) { create(:taxon, name: "root_taxon") }
   let!(:child_taxon1) do
     create(:taxon, taxonomy_id: taxonomy.id,
                    parent_id: root_taxon.id,
@@ -33,7 +29,6 @@ RSpec.feature "Categories", type: :feature do
 
   scenario "root_taxonに属する商品一覧が表示されているか" do
     expect(page).to have_content taxonomy.name
-    expect(page).to have_content root_taxon.name
     expect(page).to have_content root_taxon.permalink
     expect(page).to have_content child_taxon1.name
     expect(page).to have_content child_taxon2.name
@@ -44,7 +39,7 @@ RSpec.feature "Categories", type: :feature do
   end
 
   scenario "カテゴリーで絞り込む" do
-    click_on "#{child_taxon1.name}"
+    click_on child_taxon1.name
     expect(page).to have_content child_taxon1.permalink
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price
@@ -54,7 +49,7 @@ RSpec.feature "Categories", type: :feature do
   end
 
   scenario "商品の詳細ページへのリンクをクリックする" do
-    click_on "#{product1.name}"
+    click_on product1.name
     expect(page).to have_content product1.name
     expect(page).to have_content product1.price
     expect(page).to have_content product1.description

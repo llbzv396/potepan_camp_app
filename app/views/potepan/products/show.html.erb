@@ -1,7 +1,7 @@
 <!-- SITE TITTLE -->
 <% provide(:title, @product.name) %>
 <!-- LIGHT SECTION -->
-<%= render 'page_header' %>
+<%= render partial: 'shared/page_header', locals: { title: @product.name, active: @product.name } %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
   <div class="container">

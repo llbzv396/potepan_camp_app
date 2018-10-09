@@ -3,14 +3,16 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <h2><%= @taxon.permalink %></h2>
+          <h2><%= title %></h2>
         </div>
       </div>
       <div class="col-xs-6">
         <ol class="breadcrumb pull-right">
           <li><%= link_to "Home", potepan_path %></li>
-          <li><a href="#">shop</a></li>
-          <li class="active"><%= link_to @taxon.name, potepan_category_path(@taxon.id) %></li>
+          <% if params[:controller] == "potepan/categories"%>
+            <li><a href="#">shop</a></li>
+          <% end %>
+          <li class="active"><%= active %></li>
         </ol>
       </div>
     </div>

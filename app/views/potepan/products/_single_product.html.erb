@@ -31,9 +31,11 @@
       </div>
       <div class="media-body">
         <ul class="list-inline">
-          <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
-          <li><i class="fa fa-reply" aria-hidden="true"> Return to list</i></li>
-          <% end %>
+          <li>
+            <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
+              <i class="fa fa-reply" aria-hidden="true"></i>Return to list
+            <% end %>
+          </li>
           <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
         </ul>
         <h2><%= @product.name %></h2>

@@ -1,6 +1,6 @@
 <!-- SITE TITTLE -->
 <% provide(:title, @taxon.name) %>
-<%= render 'page_header' %>
+<%= render partial: 'shared/page_header', locals: { title: @taxon.permalink, active: @taxon.name } %>
 <section class="mainContent clearfix productsContent">
   <div class="container">
     <div class="row">

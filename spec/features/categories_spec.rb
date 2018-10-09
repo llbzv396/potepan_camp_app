@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature "Categories", type: :feature do
-  let(:taxonomy) { create(:taxonomy, taxons: [root_taxon]) }
-  let!(:root_taxon) { create(:taxon, name: "root_taxon") }
+  let!(:taxonomy) { create(:taxonomy) }
+  let!(:root_taxon) { taxonomy.root }
   let!(:child_taxon1) do
-    create(:taxon, taxonomy_id: taxonomy.id,
+    create(:taxon, taxonomy: taxonomy,
                    parent_id: root_taxon.id,
                    name: "child_taxon1")
   end
   let!(:child_taxon2) do
-    create(:taxon, taxonomy_id: taxonomy.id,
+    create(:taxon, taxonomy: taxonomy,
                    parent_id: root_taxon.id,
                    name: "child_taxon2")
   end

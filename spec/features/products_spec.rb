@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature "Products", type: :feature do
-  let(:taxonomy) { create(:taxonomy, taxons: [root_taxon]) }
-  let!(:root_taxon) { create(:taxon, name: "root_taxon") }
+  let!(:taxonomy) { create(:taxonomy) }
+  let!(:root_taxon) { taxonomy.root }
   let!(:child_taxon) do
-    create(:taxon, taxonomy_id: taxonomy.id,
+    create(:taxon, taxonomy: taxonomy,
                    parent_id: root_taxon.id,
                    name: "child_taxon")
   end

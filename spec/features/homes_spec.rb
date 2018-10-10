@@ -32,7 +32,7 @@ RSpec.feature "Homes", type: :feature do
   end
 
   scenario "新着商品のリンクをクリックする" do
-    click_on "#{lated_product.name}"
+    click_on lated_product.name
     expect(page).to have_current_path(potepan_product_path(lated_product))
     expect(page).to have_content lated_product.name
     expect(page).to have_content lated_product.price

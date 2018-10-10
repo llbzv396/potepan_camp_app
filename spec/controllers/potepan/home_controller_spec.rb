@@ -27,7 +27,7 @@ RSpec.describe Potepan::HomeController, type: :controller do
       expect(response).to render_template(:index)
     end
 
-    it "新着商品が5個表示されていること" do
+    it "新着商品が8個表示されていること" do
       expect(assigns(:lated_products).count).to eq(8)
     end
 

@@ -3,15 +3,16 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <h2><%= @product.name %></h2>
+          <h2><%= title %></h2>
         </div>
       </div>
       <div class="col-xs-6">
         <ol class="breadcrumb pull-right">
-          <li>
-            <%= link_to "Home", potepan_path %>
-          </li>
-          <li class="active"><%= @product.name %></li>
+          <li><%= link_to "Home", potepan_path %></li>
+          <% if params[:controller] == "potepan/categories"%>
+            <li><a href="#">shop</a></li>
+          <% end %>
+          <li class="active"><%= active %></li>
         </ol>
       </div>
     </div>

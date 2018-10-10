@@ -4,7 +4,7 @@
       <div class="media-left productSlider">
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <% @product_images.each.with_index do |img, i| %>
+            <% @product.images.each.with_index do |img, i| %>
             <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
               <%= image_tag img.attachment.url(:large)  %>
             </div>
@@ -14,7 +14,7 @@
         <div class="clearfix">
           <div id="thumbcarousel" class="carousel slide" data-interval="false">
             <div class="carousel-inner">
-              <% @product_images.each.with_index do |img, i| %>
+              <% @product.images.each.with_index do |img, i| %>
               <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
                 <%= image_tag img.attachment.url(:small) %>
               </div>
@@ -31,9 +31,11 @@
       </div>
       <div class="media-body">
         <ul class="list-inline">
-          <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
-          <li><i class="fa fa-reply" aria-hidden="true"> Return to list</i></li>
-          <% end %>
+          <li>
+            <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
+              <i class="fa fa-reply" aria-hidden="true"></i>Return to list
+            <% end %>
+          </li>
           <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
         </ul>
         <h2><%= @product.name %></h2>

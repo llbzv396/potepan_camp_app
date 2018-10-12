@@ -4,6 +4,6 @@ class Potepan::ProductsController < ApplicationController
     @product = Spree::Product.friendly.find(params[:id])
     @product_properties = @product.product_properties.includes(:property)
     @related_products = Spree::Product.related_products(@product).
-      including_images_prices.distinct.limit(COUNT_OF_RELATED_PRODUCTS)
+      including_images_prices.limit(COUNT_OF_RELATED_PRODUCTS)
   end
 end

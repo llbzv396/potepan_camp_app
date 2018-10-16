@@ -11,7 +11,7 @@ RSpec.feature "Products", type: :feature do
   let!(:product) do
     create(:product, price: 20.95,
                      description: "This is a product1",
-                     taxons: [root_taxon, child_taxon])
+                     taxons: [child_taxon])
   end
 
   before do

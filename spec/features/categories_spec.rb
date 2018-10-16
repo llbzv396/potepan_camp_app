@@ -17,12 +17,12 @@ RSpec.feature 'Categories', type: :feature do
     create(:product, name: 'First_Product',
                      price: 20.95,
                      description: 'This is a product1',
-                     taxons: [root_taxon, child_taxon1])
+                     taxons: [child_taxon1])
   end
   let!(:product2) do
     create(:product, name: 'Second_Product',
                      price: 15.34,
-                     taxons: [root_taxon, child_taxon2])
+                     taxons: [child_taxon2])
   end
 
   before do

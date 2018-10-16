@@ -7,4 +7,8 @@ module ApplicationHelper
       "#{page_title} - #{base_title}"
     end
   end
+
+  def ec_page?
+    params[:controller] == "potepan/categories"
+  end
 end

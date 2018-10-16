@@ -4,7 +4,7 @@
       <div class="media-left productSlider">
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <% @product.images.each.with_index do |img, i| %>
+            <% product.images.each.with_index do |img, i| %>
             <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
               <%= image_tag img.attachment.url(:large)  %>
             </div>
@@ -14,7 +14,7 @@
         <div class="clearfix">
           <div id="thumbcarousel" class="carousel slide" data-interval="false">
             <div class="carousel-inner">
-              <% @product.images.each.with_index do |img, i| %>
+              <% product.images.each.with_index do |img, i| %>
               <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
                 <%= image_tag img.attachment.url(:small) %>
               </div>
@@ -32,15 +32,15 @@
       <div class="media-body">
         <ul class="list-inline">
           <li>
-            <%= link_to potepan_category_path(@product.taxons.first.root.id) do %>
+            <%= link_to potepan_category_path(product.taxons.first.root.id) do %>
               <i class="fa fa-reply" aria-hidden="true"></i>Return to list
             <% end %>
           </li>
           <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
         </ul>
-        <h2><%= @product.name %></h2>
-        <h3><%= @product.display_price %></h3>
-        <p><%= @product.description %></p>
+        <h2><%= product.name %></h2>
+        <h3><%= product.display_price %></h3>
+        <p><%= product.description %></p>
         <span class="quick-drop">
           <select name="guiest_id3" id="guiest_id3" class="select-drop">
             <option value="0">S</option>
@@ -70,7 +70,7 @@
           <div class="tab-content">
             <div id="details" class="tab-pane fade in active">
               <table>
-                <% @product_properties.each do |product_property| %>
+                <% product_properties.each do |product_property| %>
                 <tr>
                   <td class="detail_list"><strong><%= product_property.property.presentation %></strong></td>
                   <td class="detail_list"><%= product_property.value %></td>

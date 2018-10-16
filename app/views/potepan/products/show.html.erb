@@ -6,6 +6,6 @@
 <section class="mainContent clearfix">
   <div class="container">
     <%= render partial: 'single_product', locals: { product: @product, product_properties: @product_properties} %>
-    <%= render 'related_products_index' %>
+    <%= render partial: 'related_products_index', locals: { related_products: @related_products } %>
   </div>
 </section>

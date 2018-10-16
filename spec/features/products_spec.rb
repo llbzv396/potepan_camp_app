@@ -12,7 +12,7 @@ RSpec.feature 'Products', type: :feature do
     create(:product, name: 'basis_product',
                      price: 20.75,
                      description: 'This is a basis_product',
-                     taxons: [root_taxon, child_taxon])
+                     taxons: [child_taxon])
   end
   let!(:related_product1) do
     create(:product, name: 'related_product1',

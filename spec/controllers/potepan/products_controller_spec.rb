@@ -10,7 +10,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
 
   describe "showアクションに関するテスト" do
     before do
-      get :show, params: { id: product.id }
+      get :show, params: { slug_or_id: product }
     end
 
     it "正常にレスポンスを返すこと" do

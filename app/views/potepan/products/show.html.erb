@@ -5,7 +5,7 @@
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
   <div class="container">
-    <%= render 'single_product' %>
+    <%= render partial: 'single_product', locals: { product: @product, product_properties: @product_properties} %>
     <%= render 'related_products_index' %>
   </div>
 </section>

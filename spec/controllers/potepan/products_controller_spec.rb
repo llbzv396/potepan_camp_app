@@ -32,7 +32,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
     end
 
     describe "relted_productsに関するテスト" do
-      let!(:related_products) do
+      let(:related_products) do
         create_list(:product, 4, product_properties: [product_property], taxons: [taxon])
       end
 
@@ -40,8 +40,36 @@ RSpec.describe Potepan::ProductsController, type: :controller do
         expect(assigns(:related_products)).to match_array(related_products)
       end
 
-      it "@related_productsの数は4個か" do
-        expect(assigns(:related_products).count).to eq 4
+      describe "個数に関するテスト" do
+        context "関連商品が3個の場合" do
+          let!(:three_related_products) do
+            create_list(:product, 3, product_properties: [product_property], taxons: [taxon])
+          end
+
+          it "@related_productsの数は3個か" do
+            expect(assigns(:related_products).count).to eq 3
+          end
+        end
+
+        context "関連商品が4個の場合" do
+          let!(:four_related_products) do
+            create_list(:product, 4, product_properties: [product_property], taxons: [taxon])
+          end
+
+          it "@related_productsの数は4個か" do
+            expect(assigns(:related_products).count).to eq 4
+          end
+        end
+
+        context "関連商品が5個の場合" do
+          let!(:five_related_products) do
+            create_list(:product, 5, product_properties: [product_property], taxons: [taxon])
+          end
+
+          it "@related_productsの数は4個に制限されているか" do
+            expect(assigns(:related_products).count).to eq 4
+          end
+        end
       end
     end
   end

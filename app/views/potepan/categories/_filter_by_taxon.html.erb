@@ -3,7 +3,7 @@
   <div class="panel-body">
     <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
       <ul class="nav navbar-nav side-nav">
-        <% @taxonomies.each do |taxonomy| %>
+        <% taxonomies.each do |taxonomy| %>
         <li>
           <a href="javascript:;" data-toggle="collapse" data-target="#<%= taxonomy.id %>">
             <%= taxonomy.name %><i class="fa fa-plus"></i>

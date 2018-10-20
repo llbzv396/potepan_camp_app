@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def shop_page?
-    params[:controller] == "potepan/categories" || params[:controller] == "potepan/prodcuts"
+    params[:controller] == "potepan/products" || params[:controller] == "potepan/categories"
   end
 end

@@ -3,6 +3,14 @@ require 'rails_helper'
 RSpec.feature 'Categories', type: :feature do
   let!(:taxonomy) { create(:taxonomy, name: 'taxonomy') }
   let!(:root_taxon) { taxonomy.root }
+  let!(:color_value1) { create(:option_value, name: "Red", presentation: "Red") }
+  let!(:color_value2) { create(:option_value, name: "Blue", presentation: "Blue") }
+  let!(:color_option) do
+    create(:option_type, option_values: [],
+                         id: 2,
+                         name: "Color",
+                         presentation: "Color")
+  end
   let!(:child_taxon1) do
     create(:taxon, taxonomy: taxonomy,
                    parent_id: root_taxon.id,
@@ -57,5 +65,18 @@ RSpec.feature 'Categories', type: :feature do
     expect(page).to have_content 'This is a product1'
     expect(page).to have_content 'Return to list'
     expect(page).to have_current_path(potepan_product_path(product1))
+  end
+
+  scenario "色で絞り込む" do
+    # 色で絞り込む
+    # 商品の表示が適正か確認
+    # 今のパスを確認
+  end
+
+  scenario "カテゴリで絞り込んだ商品を更に色で絞り込む" do
+    # カテゴリで絞り込む
+    # 色で絞り込む
+    # 商品の表示が適正か確認
+    # 今のパスを確認
   end
 end

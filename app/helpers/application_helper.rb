@@ -11,4 +11,12 @@ module ApplicationHelper
   def ec_page?
     params[:controller] == "potepan/categories"
   end
+
+  def home_page?
+    params[:controller] == "potepan/home"
+  end
+
+  def shop_page?
+    params[:controller] == "potepan/products" || params[:controller] == "potepan/categories"
+  end
 end

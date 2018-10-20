@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "Homes", type: :feature do
-  let!(:root_taxon) { create(:taxon) }
+  let!(:taxon) { create(:taxon) }
   let!(:lated_product) do
     create(:product, name: 'lated_product',
                      available_on: 1.month.ago,
                      price: 20.24,
                      description: 'This is lated_product',
-                     taxons: [root_taxon])
+                     taxons: [taxon])
   end
   let!(:basis_product) do
     create_list(:product, 7,
@@ -25,7 +25,7 @@ RSpec.feature "Homes", type: :feature do
     visit potepan_path
   end
 
-  scenario "ホームに表示されている内容を確認する" do
+  scenario "新着商品のみが表示されているか" do
     expect(page).to have_content 'lated_product'
     expect(page).to have_content 20.24
     expect(page).to have_content 'basis_product'
@@ -34,12 +34,11 @@ RSpec.feature "Homes", type: :feature do
     expect(page).not_to have_content 15.32
   end
 
-  scenario "新着商品のリンクをクリックする" do
+  scenario "新着商品のリンクをクリックしたら、商品ページへ遷移すること" do
     click_on 'lated_product'
     expect(page).to have_current_path(potepan_product_path(lated_product))
     expect(page).to have_content 'lated_product'
     expect(page).to have_content 20.24
     expect(page).to have_content 'This is lated_product'
-    expect(page).to have_content 'Return to list'
   end
 end

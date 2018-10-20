@@ -5,7 +5,7 @@
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <% product.images.each.with_index do |img, i| %>
-            <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
+            <div class="item <%= "active" if i.zero? %>" data-thumb="<%= i %>">
               <%= image_tag img.attachment.url(:large)  %>
             </div>
             <% end %>

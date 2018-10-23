@@ -19,4 +19,14 @@ module ApplicationHelper
   def shop_page?
     params[:controller] == "potepan/products" || params[:controller] == "potepan/categories"
   end
+
+  def grid_type?
+    session[:view_type] = params[:view] if params[:view].present?
+    session[:view_type] == "grid" || session[:view_type].nil?
+  end
+
+  def list_type?
+    session[:view_type] = params[:view] if params[:view].present?
+    session[:view_type] == "list"
+  end
 end

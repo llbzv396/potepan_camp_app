@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :potepan do
     resources :products, param: :slug_or_id, only: [:show]
     resources :categories,                   only: [:show]
+    root                            to: 'home#index'
     get :/,                         to: 'home#index'
     get :index,                     to: 'home#index'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'

@@ -60,6 +60,5 @@ module Potepanec
     end
 
     config.time_zone = 'Tokyo'
-    config.assets.enabled = true
   end
 end

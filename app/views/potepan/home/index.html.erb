@@ -1,0 +1,9 @@
+<%= render 'banner' %>
+<section class="mainContent clearfix">
+  <div class="container">
+    <%= render 'popular_category' %>
+    <%= render partial: 'lated_products_index', locals: { lated_products: @lated_products } %>
+    <%= render 'useful_articles' %>
+  </div>
+</section>
+<%= render 'shared/bottom_light' %>

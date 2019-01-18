@@ -11,4 +11,22 @@ module ApplicationHelper
   def ec_page?
     params[:controller] == "potepan/categories"
   end
+
+  def home_page?
+    params[:controller] == "potepan/home"
+  end
+
+  def shop_page?
+    params[:controller] == "potepan/products" || params[:controller] == "potepan/categories"
+  end
+
+  def grid_type?
+    session[:view_type] = params[:view] if params[:view].present?
+    session[:view_type] == "grid" || session[:view_type].nil?
+  end
+
+  def list_type?
+    session[:view_type] = params[:view] if params[:view].present?
+    session[:view_type] == "list"
+  end
 end

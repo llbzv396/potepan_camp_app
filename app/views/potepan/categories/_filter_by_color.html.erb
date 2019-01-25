@@ -2,11 +2,10 @@
   <div class="panel-heading">FILTER BY COLOR</div>
   <div class="panel-body">
     <ul class="list-unstyled">
-      <li><a href="#">Black<span>(15)</span></a></li>
-      <li><a href="#">White<span>(10)</span></a></li>
-      <li><a href="#">Red<span>(7)</span></a></li>
-      <li><a href="#">Blue<span>(12)</span></a></li>
-      <li><a href="#">Orange<span>(12)</span></a></li>
+      <% @options.find(2).option_values.each do |color_option| %>
+      <li><a href="?type=2&color=<%= color_option.id %>"><%= color_option.presentation %>
+        <span>(<%= products_count_filtered_by_color(color_option.name, 2) %>)</span></a></li>
+      <% end %>
     </ul>
   </div>
 </div>

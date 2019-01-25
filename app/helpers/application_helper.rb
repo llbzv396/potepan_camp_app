@@ -21,12 +21,10 @@ module ApplicationHelper
   end
 
   def grid_type?
-    session[:view_type] = params[:view] if params[:view].present?
-    session[:view_type] == "grid" || session[:view_type].nil?
+    session[:format] == 'grid' || session[:format].nil?
   end
 
   def list_type?
-    session[:view_type] = params[:view] if params[:view].present?
-    session[:view_type] == "list"
+    session[:format] == 'list'
   end
 end

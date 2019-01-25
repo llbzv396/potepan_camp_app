@@ -30,6 +30,7 @@ RSpec.feature 'Products', type: :feature do
                      price: 3.86,
                      taxons: [])
   end
+  let!(:option) { create(:option_type, id: 2, name: "Color", presentation: "Color") }
 
   before do
     visit potepan_product_path(basis_product)

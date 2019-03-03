@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :categories,                   only: [:show]
     get :/,                         to: 'home#index'
     get :index,                     to: 'home#index'
+    get :unfinished,                to: 'home#unfinished'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'
     get :product_list_left_sidebar, to: 'sample#product_list_left_sidebar'
     get :single_product,            to: 'sample#single_product'

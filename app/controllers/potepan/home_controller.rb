@@ -8,4 +8,7 @@ class Potepan::HomeController < ApplicationController
     @bags = Spree::Taxon.find_by(name: "Bags")
     @mugs = Spree::Taxon.find_by(name: "Mugs")
   end
+
+  def unfinished
+  end
 end

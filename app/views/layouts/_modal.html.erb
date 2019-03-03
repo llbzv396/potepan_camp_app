@@ -7,23 +7,23 @@
         <h3 class="modal-title">log in</h3>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" role="form">
+        <%= form_tag('/potepan/unfinished', role: 'form') do %>
           <div class="form-group">
-            <label for="login-email">Enter Email</label>
-            <input type="email" class="form-control" id="login-email">
+            <%= label_tag 'Enter Email' %>
+            <%= text_field_tag :email, '', { class: 'form-control', id: 'login-email'} %>
           </div>
           <div class="form-group">
-            <label for="login-password">Password</label>
-            <input type="password" class="form-control" id="login-password">
+            <%= label_tag 'Password' %>
+            <%= text_field_tag :password, '', { class: 'form-control', id: 'login-password'} %>
           </div>
           <div class="checkbox">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
+            <%= label_tag '' %>
+            <%= check_box_tag :checkbox %>
+            Remember Me
           </div>
           <button type="submit" class="btn btn-primary btn-block">log in</button>
-          <button type="button" class="btn btn-link btn-block">Forgot Password?</button>
-        </form>
+          <button type="submit" class="btn btn-link btn-block">Forgot Password?</button>
+        <% end %>
       </div>
     </div>
   </div>
@@ -38,21 +38,21 @@
         <h3 class="modal-title">Create an account</h3>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" role="form">
+        <%= form_tag('/potepan/unfinished', role: 'form') do %>
           <div class="form-group">
-            <label for="signup-email">Enter Email</label>
-            <input type="email" class="form-control" id="signup-email">
+            <%= label_tag 'Enter Email' %>
+            <%= text_field_tag :email, '', { class: 'form-control', id: 'signyp-email'} %>
           </div>
           <div class="form-group">
-            <label for="signup-password">Password</label>
-            <input type="password" class="form-control" id="signup-password">
+            <%= label_tag 'Password' %>
+            <%= text_field_tag :password, '', { class: 'form-control', id: 'signup-password'} %>
           </div>
           <div class="form-group">
-            <label for="signup-password-confirmation">Confirm Password</label>
-            <input type="password" class="form-control" id="signup-password-confirmation">
+            <%= label_tag 'Confirm Password' %>
+            <%= text_field_tag :password, '', { class: 'form-control', id: 'signup-password-confirmation'} %>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Sign up</button>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
@@ -89,7 +89,7 @@
               </select>
             </span>
             <div class="btn-area">
-              <a href="#" class="btn btn-primary btn-block">Add to cart <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              <a href="potepan/unfinished" class="btn btn-primary btn-block">Add to cart <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>

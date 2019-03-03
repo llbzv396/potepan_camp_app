@@ -6,6 +6,7 @@ Rails:
 
 AllCops:
   Exclude:
+    - 'vendor/**/*'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'

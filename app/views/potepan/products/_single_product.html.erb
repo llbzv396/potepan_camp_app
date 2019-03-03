@@ -5,7 +5,7 @@
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <% product.images.each.with_index do |img, i| %>
-            <div class="item <%= i==0 ? "active" : "" %>" data-thumb="<%= i %>">
+            <div class="item <%= "active" if i.zero? %>" data-thumb="<%= i %>">
               <%= image_tag img.attachment.url(:large)  %>
             </div>
             <% end %>
@@ -58,7 +58,9 @@
           </select>
         </span>
         <div class="btn-area">
-          <a href="cart_page.html" class="btn btn-primary btn-block">カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+          <%= link_to potepan_unfinished_path, class: 'btn btn-primary btn-block' do %>
+            カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
+          <% end %>
         </div>
         <div class="tabArea">
           <ul class="nav nav-tabs">

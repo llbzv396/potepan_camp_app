@@ -33,7 +33,7 @@
         <ul class="list-inline">
           <li>
             <%= link_to potepan_category_path(product.taxons.first.root.id) do %>
-              <i class="fa fa-reply" aria-hidden="true"></i>Return to list
+              <i class="fa fa-reply" aria-hidden="true"></i>商品一覧に戻る
             <% end %>
           </li>
           <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
@@ -64,10 +64,10 @@
         </div>
         <div class="tabArea">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#details">details</a></li>
-            <li><a data-toggle="tab" href="#about-art">about art</a></li>
-            <li><a data-toggle="tab" href="#sizing">sizing</a></li>
-            <li><a data-toggle="tab" href="#shipping">shipping</a></li>
+            <li class="active"><a data-toggle="tab" href="#details">詳細情報</a></li>
+            <li><a data-toggle="tab" href="#review">レビュー</a></li>
+            <li><a data-toggle="tab" href="#shipping">配送方法</a></li>
+            <li><a data-toggle="tab" href="#others">その他</a></li>
           </ul>
           <div class="tab-content">
             <div id="details" class="tab-pane fade in active">
@@ -80,14 +80,14 @@
                 <% end %>
               </table>
             </div>
-            <div id="about-art" class="tab-pane fade">
-              <p>Nulla facilisi. Mauris efficitur, massa et iaculis accumsan, mauris velit ultrices purus, quis condimentum nibh dolor ut tortor. Donec egestas tortor quis mattis gravida. Ut efficitur elit vitae dignissim volutpat. </p>
+            <div id="review" class="tab-pane fade">
+              <p>かなり良い！</p>
             </div>
-            <div id="sizing" class="tab-pane fade">
-              <p>Praesent dui felis, gravida a auctor at, facilisis commodo ipsum. Cras eu faucibus justo. Nullam varius cursus nisi, sed elementum sem sagittis at. Nulla tellus massa, vestibulum a commodo facilisis, pulvinar convallis nunc.</p>
+            <div id="others" class="tab-pane fade">
+              <p>期間限定で割引実施中</p>
             </div>
             <div id="shipping" class="tab-pane fade">
-              <p>Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus.</p>
+              <p>配送方法は佐川急便を予定</p>
             </div>
           </div>
         </div>

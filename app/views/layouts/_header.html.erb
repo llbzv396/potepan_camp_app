@@ -8,57 +8,11 @@
           <ul class="list-inline">
             <li><a href="/potepan/unfinished"><i class="fa fa-twitter"></i></a></li>
             <li><a href="/potepan/unfinished"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="/potepan/unfinished"><i class="fa fa-dribbble"></i></a></li>
-            <li><a href="/potepan/unfinished"><i class="fa fa-vimeo"></i></a></li>
-            <li><a href="/potepan/unfinished"><i class="fa fa-tumblr"></i></a></li>
           </ul>
         </div>
         <div class="col-md-6 col-xs-12">
           <ul class="list-inline pull-right">
-            <li><span><a data-toggle="modal" href='#login'>Log in</a><small>or</small><a data-toggle="modal" href='#signup'>Create an account</a></span></li>
-            <li class="dropdown searchBox">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                  <span class="input-group">
-                    <input type="text" class="form-control" placeholder="Search…" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2">Search</span>
-                  </span>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>$0</a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li>Item(s) in your cart</li>
-                <li>
-                  <a href="#">
-                    <div class="media">
-                      <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
-                      <div class="media-body">
-                        <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="media">
-                      <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
-                      <div class="media-body">
-                        <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Shopping Cart</button>
-                    <button type="button" class="btn btn-default">Checkout</button>
-                  </div>
-                </li>
-              </ul>
-            </li>
+            <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li>
           </ul>
         </div>
       </div>
@@ -81,58 +35,39 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown megaDropMenu <% if home_page? %> active <% end %> ">
-            <%= link_to "Home", potepan_path %></li>
+            <%= link_to "トップページ", potepan_path %></li>
           <li class="dropdown megaDropMenu <% if shop_page? %> active <% end %> ">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">Shop</a>
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">お買い物</a>
             <ul class="dropdown-menu row">
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>Products Grid View</li>
-                  <li><%= link_to 'All Products', potepan_category_path(1) %></li>
+                  <li>グリッド表示</li>
+                  <li><%= link_to '全ての商品', potepan_category_path(1) %></li>
                 </ul>
               </li>
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>Products List View</li>
-                  <li><%= link_to 'All Products', potepan_category_path(1) %></li>
-                </ul>
-              </li>
-              <li class="col-sm-3 col-xs-12">
-                <ul class="list-unstyled">
-                  <li class="listHeading">Others</li>
-                  <li><%= link_to 'Cart Page', potepan_cart_page_path %></li>
+                  <li>リスト表示</li>
+                  <li><%= link_to '全ての商品', potepan_category_path(1) %></li>
                 </ul>
               </li>
             </ul>
+          </li>          
+          <li class="dropdown megaDropMenu">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント設定</a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to 'ダッシュボード', potepan_unfinished_path %></li>
+              <li><%= link_to 'プロフィール', potepan_unfinished_path %></li>
+              <li><%= link_to '注文履歴', potepan_unfinished_path %></li>
+              <li><%= link_to 'お気に入り', potepan_unfinished_path %></li>
+            </ul>
           </li>
           <li class="dropdown megaDropMenu">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages</a>
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">その他</a>
             <ul class="dropdown-menu dropdown-menu-left">
-              <li><%= link_to 'About Us', potepan_about_us_path %></li>
-              <li><%= link_to 'Login', potepan_unfinished_path %></li>
-              <li><%= link_to 'Password Recovery', potepan_unfinished_path %></li>
-              <li><%= link_to 'Privacy Policy', potepan_privacy_policy_path %></li>
-              <li><%= link_to 'Terms & Conditions', potepan_tokushoho_path %></li>
-            </ul>
-          </li>
-          <li class="dropdown megaDropMenu">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog</a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= link_to 'Right Sidebar', potepan_blog_right_sidebar_path %></li>
-              <li><%= link_to 'Left Sidebar', potepan_blog_left_sidebar_path %></li>
-              <li><%= link_to 'Single Right Sidebar', potepan_blog_single_right_sidebar_path %></li>
-              <li><%= link_to 'Single Left Sidebar', potepan_blog_single_left_sidebar_path %></li>
-            </ul>
-          </li>
-          <li class="dropdown megaDropMenu">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= link_to 'Dashboard', potepan_unfinished_path %></li>
-              <li><%= link_to 'Profile', potepan_unfinished_path %></li>
-              <li><%= link_to 'All Orders', potepan_unfinished_path %></li>
-              <li><%= link_to 'Single Order', potepan_unfinished_path %></li>
-              <li><%= link_to 'Wish list', potepan_unfinished_path %></li>
-              <li><%= link_to 'Address', potepan_unfinished_path %></li>
+              <li><%= link_to '運営会社', potepan_about_us_path %></li>
+              <li><%= link_to 'プライバシーポリシー', potepan_privacy_policy_path %></li>
+              <li><%= link_to '特定商品取引法', potepan_tokushoho_path %></li>
             </ul>
           </li>
         </ul>

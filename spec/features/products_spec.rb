@@ -40,7 +40,7 @@ RSpec.feature 'Products', type: :feature do
     expect(page).to have_content 'basis_product'
     expect(page).to have_content 20.75
     expect(page).to have_content 'This is a basis_product'
-    expect(page).to have_content 'Return to list'
+    expect(page).to have_content '商品一覧に戻る'
   end
 
   scenario '選択した商品に関連する商品だけが表示されているか' do
@@ -61,7 +61,7 @@ RSpec.feature 'Products', type: :feature do
   end
 
   scenario 'return to listをクリックしたらカテゴリ一覧ページへ遷移するか' do
-    click_on 'Return to list'
+    click_on '商品一覧に戻る'
     expect(page).to have_content 'basis_product'
     expect(page).to have_content 20.75
     expect(page).to have_content 'related_product1'

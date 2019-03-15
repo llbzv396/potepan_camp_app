@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Homes", type: :feature do
   let!(:taxon) { create(:taxon) }
-  let!(:txon_of_shirt) { create(:taxon, name: 'Shirts') }
-  let!(:txon_of_bags) { create(:taxon, name: 'Bags') }
-  let!(:txon_of_mugs) { create(:taxon, name: 'Mugs') }
+  let!(:txon_of_shirt) { create(:taxon, name: 'Tシャツ') }
+  let!(:txon_of_bags) { create(:taxon, name: 'バッグ') }
+  let!(:txon_of_mugs) { create(:taxon, name: 'マグ') }
   let!(:lated_product) do
     create(:product, name: 'lated_product',
                      available_on: 1.month.ago,

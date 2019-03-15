@@ -30,18 +30,18 @@ RSpec.feature "Homes", type: :feature do
 
   scenario "新着商品のみが表示されているか" do
     expect(page).to have_content 'lated_product'
-    expect(page).to have_content 20.24
+    expect(page).to have_content (20.24*110).to_i
     expect(page).to have_content 'basis_product'
-    expect(page).to have_content 17.23
+    expect(page).to have_content (17.23*110).to_i
     expect(page).not_to have_content 'old_product'
-    expect(page).not_to have_content 15.32
+    expect(page).not_to have_content (15.32*110).to_i
   end
 
   scenario "新着商品のリンクをクリックしたら、商品ページへ遷移すること" do
     click_on 'lated_product'
     expect(page).to have_current_path(potepan_product_path(lated_product))
     expect(page).to have_content 'lated_product'
-    expect(page).to have_content 20.24
+    expect(page).to have_content (20.24*110).to_i
     expect(page).to have_content 'This is lated_product'
   end
 end

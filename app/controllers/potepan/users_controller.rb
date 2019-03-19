@@ -25,12 +25,6 @@ class Potepan::UsersController < ApplicationController
     redirect_to potepan_path
   end
 
-  def history
-  end
-
-  def favorites
-  end
-
   private
 
   def user_params

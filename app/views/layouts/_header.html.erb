@@ -14,6 +14,7 @@
         <% if logged_in? %>
           <ul class="list-inline pull-right">
             <li><span>
+              <%= link_to 'アカウント設定', potepan_user_path(session[:user_id]) %>
               <%= link_to "ログアウト", potepan_logout_path, method: :delete %>
             </span></li>
             <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
@@ -54,34 +55,34 @@
             <ul class="dropdown-menu row">
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>グリッド表示</li>
-                  <li><%= link_to '全ての商品', potepan_category_path(1) %></li>
+                  <li>全ての商品</li>
+                  <li><%= link_to 'グリッド表示', potepan_category_path(1, format: "grid") %></li>
+                  <li><%= link_to 'リスト表示', potepan_category_path(1, format: "list") %></li>
                 </ul>
               </li>
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>リスト表示</li>
-                  <li><%= link_to '全ての商品', potepan_category_path(1) %></li>
+                  <li>カテゴリから</li>
+                  <% @taxons.each do |taxon| %>
+                    <li><%= link_to taxon.name, potepan_category_path(taxon.id) %></li>
+                  <% end %>
                 </ul>
               </li>
-            </ul>
-          </li>
-          <% if logged_in? %>
-          <li class="dropdown megaDropMenu">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント設定</a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= link_to 'ダッシュボード', potepan_user_path(session[:user_id]) %></li>
-              <li><%= link_to '注文履歴', potepan_history_path %></li>
-              <li><%= link_to 'お気に入り', potepan_favorites_path %></li>
-            </ul>
-          </li>
-          <% end %>
-          <li class="dropdown megaDropMenu">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">その他</a>
-            <ul class="dropdown-menu dropdown-menu-left">
-              <li><%= link_to '運営会社', potepan_about_us_path %></li>
-              <li><%= link_to 'プライバシーポリシー', potepan_privacy_policy_path %></li>
-              <li><%= link_to '特定商品取引法', potepan_tokushoho_path %></li>
+              <li class="col-sm-3 col-xs-12">
+                <ul class="list-unstyled">
+                  <li>ブランドから</li>
+                  <% @brands.each do |brand| %>
+                    <li><%= link_to brand.name, potepan_category_path(brand.id) %></li>
+                  <% end %>
+                </ul>
+              </li>
+              <li class="col-sm-3 col-xs-12">
+                <ul class="list-unstyled">
+                  <li>カート</li>
+                  <li><%= link_to '中身を確認', potepan_cart_page_path %></li>
+                  <li><%= link_to '購入手続きに進む', potepan_checkout_step_1_path %></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>

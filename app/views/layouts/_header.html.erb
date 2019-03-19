@@ -11,9 +11,22 @@
           </ul>
         </div>
         <div class="col-md-6 col-xs-12">
+        <% if logged_in? %>
           <ul class="list-inline pull-right">
-            <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li>
+            <li><span>
+              <%= link_to "ログアウト", potepan_logout_path, method: :delete %>
+            </span></li>
+            <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
           </ul>
+        <% else %>
+          <ul class="list-inline pull-right">
+            <li><span>
+              <%= link_to 'ログイン', potepan_login_path %>
+              <%= link_to '新規登録', new_potepan_user_path %>
+            </span></li>
+            <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
+          </ul>
+        <% end %>
         </div>
       </div>
     </div>
@@ -52,16 +65,17 @@
                 </ul>
               </li>
             </ul>
-          </li>          
+          </li>
+          <% if logged_in? %>
           <li class="dropdown megaDropMenu">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント設定</a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= link_to 'ダッシュボード', potepan_unfinished_path %></li>
-              <li><%= link_to 'プロフィール', potepan_unfinished_path %></li>
-              <li><%= link_to '注文履歴', potepan_unfinished_path %></li>
-              <li><%= link_to 'お気に入り', potepan_unfinished_path %></li>
+              <li><%= link_to 'ダッシュボード', potepan_user_path(session[:user_id]) %></li>
+              <li><%= link_to '注文履歴', potepan_history_path %></li>
+              <li><%= link_to 'お気に入り', potepan_favorites_path %></li>
             </ul>
           </li>
+          <% end %>
           <li class="dropdown megaDropMenu">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">その他</a>
             <ul class="dropdown-menu dropdown-menu-left">

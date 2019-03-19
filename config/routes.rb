@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   namespace :potepan do
     resources :products, param: :slug_or_id, only: [:show]
     resources :categories,                   only: [:show]
+    resources :users
+    get    '/login',                to: 'sessions#new'
+    post   '/login',                to: 'sessions#create'
+    delete '/logout',               to: 'sessions#destroy'
+    get    '/favorites',            to: 'users#favorite'
+    get    '/history',              to: 'users#history'
     get :/,                         to: 'home#index'
     get :index,                     to: 'home#index'
     get :unfinished,                to: 'home#unfinished'

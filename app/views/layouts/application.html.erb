@@ -4,6 +4,11 @@
   <body>
     <div class="main-wrapper">
       <%= render 'layouts/header' %>
+      <div class="container pt-3 text-center">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= render 'layouts/copy_right' %>

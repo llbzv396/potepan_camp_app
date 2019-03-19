@@ -18,7 +18,7 @@ Bundler.require(*Rails.groups)
 
 module Potepanec
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -61,5 +61,9 @@ module Potepanec
     end
 
     config.time_zone = 'Tokyo'
+
+    # エラーメッセージの日本語化
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end

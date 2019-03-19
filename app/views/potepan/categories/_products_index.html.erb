@@ -2,11 +2,11 @@
   <div class="row filterArea">
     <div class="col-xs-6">
       <select name="guiest_id1" id="guiest_id1" class="select-drop">
-        <option value="0">Default sorting</option>
-        <option value="1">Sort by popularity</option>
-        <option value="2">Sort by rating</option>
-        <option value="3">Sort by newness</option>
-        <option value="3">Sort by price</option>
+        <option value="0">人気が高い</option>
+        <option value="1">発売日が新しい</option>
+        <option value="2">発売日が古い</option>
+        <option value="3">値段が安い</option>
+        <option value="3">値段が高い</option>
       </select>
     </div>
     <div class="col-xs-6">
@@ -16,7 +16,7 @@
                                                        color: params[:color]
                                           ) do %>
           <button type="button" class="btn btn-default <%= "active" if grid_type? %>">
-            <i class="fa fa-th-list" aria-hidden="true"></i><span>Grid</span>
+            <i class="fa fa-th-list" aria-hidden="true"></i><span>グリッド</span>
           </button>
         <% end %>
         <%= link_to potepan_category_path(params[:id], format: "list",
@@ -24,7 +24,7 @@
                                                        color: params[:color]
                                           ) do %>
           <button type="button" class="btn btn-default <%= "active" if list_type? %>">
-            <i class="fa fa-th-list" aria-hidden="true"></i><span>List</span>
+            <i class="fa fa-th-list" aria-hidden="true"></i><span>リスト</span>
           </button>
         <% end %>
       </div>

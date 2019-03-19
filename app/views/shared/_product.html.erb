@@ -16,5 +16,5 @@
   <%= link_to potepan_product_path(product) do %>
     <h5><%= product.name %></h5>
   <% end %>
-  <h3><%= product.display_price %></h3>
+  <h3><%= (product.price * 110).to_i %>円</h3>
 </div>

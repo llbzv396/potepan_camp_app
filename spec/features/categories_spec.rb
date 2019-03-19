@@ -39,31 +39,31 @@ RSpec.feature 'Categories', type: :feature do
 
   scenario 'root_taxonに属する商品一覧が表示されているか' do
     expect(page).to have_content 'taxonomy'
-    expect(page).to have_content root_taxon.permalink
+    expect(page).to have_content root_taxon.name
     expect(page).to have_content 'child_taxon1'
     expect(page).to have_content 'child_taxon2'
     expect(page).to have_content 'First_Product'
-    expect(page).to have_content 20.95
+    expect(page).to have_content (20.95*110).to_i
     expect(page).to have_content 'Second_Product'
-    expect(page).to have_content 15.34
+    expect(page).to have_content (15.34*110).to_i
   end
 
   scenario '選択したカテゴリーで絞り込みができるか' do
     click_on 'child_taxon1'
-    expect(page).to have_content child_taxon1.permalink
+    expect(page).to have_content child_taxon1.name
     expect(page).to have_content 'First_Product'
-    expect(page).to have_content 20.95
+    expect(page).to have_content (20.95*110).to_i
     expect(page).not_to have_content 'Second_Product'
-    expect(page).not_to have_content 15.34
+    expect(page).not_to have_content (15.34*110).to_i
     expect(page).to have_current_path(potepan_category_path(child_taxon1.id))
   end
 
   scenario '商品名をクリックしたらその商品ページへ遷移するか' do
     click_on 'First_Product'
     expect(page).to have_content 'First_Product'
-    expect(page).to have_content 20.95
+    expect(page).to have_content (20.95*110).to_i
     expect(page).to have_content 'This is a product1'
-    expect(page).to have_content 'Return to list'
+    expect(page).to have_content '商品一覧に戻る'
     expect(page).to have_current_path(potepan_product_path(product1))
   end
 

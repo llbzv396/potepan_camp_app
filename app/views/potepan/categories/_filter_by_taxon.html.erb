@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">CATEGORIES & BRANDS</div>
+  <div class="panel-heading">カテゴリかブランドで絞り込み</div>
   <div class="panel-body">
     <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
       <ul class="nav navbar-nav side-nav">
@@ -12,7 +12,7 @@
             <li>
               <%= link_to potepan_category_path(taxonomy.root.id) do %>
                 <i class="fa fa-caret-right" aria-hidden="true"></i>
-                ALL <span>(<%= Spree::Product.in_taxon(taxonomy.root).count %>)</span>
+                全て <span>(<%= Spree::Product.in_taxon(taxonomy.root).count %>)</span>
               <% end %>
             </li>
             <% taxonomy.root.leaves.each do |taxon| %>

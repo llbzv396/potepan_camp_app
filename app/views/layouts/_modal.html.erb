@@ -4,25 +4,25 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">log in</h3>
+        <h3 class="modal-title">ログイン</h3>
       </div>
       <div class="modal-body">
         <%= form_tag('/potepan/unfinished', role: 'form') do %>
           <div class="form-group">
-            <%= label_tag 'Enter Email' %>
+            <%= label_tag 'メールアドレス' %>
             <%= text_field_tag :email, '', { class: 'form-control', id: 'login-email'} %>
           </div>
           <div class="form-group">
-            <%= label_tag 'Password' %>
+            <%= label_tag 'パスワード' %>
             <%= text_field_tag :password, '', { class: 'form-control', id: 'login-password'} %>
           </div>
           <div class="checkbox">
             <%= label_tag '' %>
             <%= check_box_tag :checkbox %>
-            Remember Me
+            パスワードを保存
           </div>
-          <button type="submit" class="btn btn-primary btn-block">log in</button>
-          <button type="submit" class="btn btn-link btn-block">Forgot Password?</button>
+          <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+          <button type="submit" class="btn btn-link btn-block">パスワードを忘れた場合</button>
         <% end %>
       </div>
     </div>
@@ -35,23 +35,23 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title">Create an account</h3>
+        <h3 class="modal-title">新規作成</h3>
       </div>
       <div class="modal-body">
         <%= form_tag('/potepan/unfinished', role: 'form') do %>
           <div class="form-group">
-            <%= label_tag 'Enter Email' %>
+            <%= label_tag 'メールアドレス' %>
             <%= text_field_tag :email, '', { class: 'form-control', id: 'signyp-email'} %>
           </div>
           <div class="form-group">
-            <%= label_tag 'Password' %>
+            <%= label_tag 'パスワード' %>
             <%= text_field_tag :password, '', { class: 'form-control', id: 'signup-password'} %>
           </div>
           <div class="form-group">
-            <%= label_tag 'Confirm Password' %>
+            <%= label_tag 'パスワードの確認' %>
             <%= text_field_tag :password, '', { class: 'form-control', id: 'signup-password-confirmation'} %>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+          <button type="submit" class="btn btn-primary btn-block">新規登録</button>
         <% end %>
       </div>
     </div>
@@ -69,27 +69,18 @@
             <%= image_tag("img/products/quick-view/quick-view-01.jpg", :class => "media-object", :alt => "Image") %>
           </div>
           <div class="media-body">
-            <h2>Old Skool Navy</h2>
-            <h3>$149</h3>
-            <p>Classic sneaker from Vans. Cotton canvas and suede upper. Textile lining with heel stabilizer and ankle support. Contrasting laces. Sits on a classic waffle rubber sole.</p>
+            <h2>サンプル商品名</h2>
+            <h3>値段</h3>
+            <p>説明</p>
             <span class="quick-drop">
               <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                <option value="0">Size</option>
-                <option value="1">Size 1</option>
-                <option value="2">Size 2</option>
-                <option value="3">Size 3</option>
-              </select>
-            </span>
-            <span class="quick-drop resizeWidth">
-              <select name="guiest_id4" id="guiest_id4" class="select-drop">
-                <option value="0">Qty</option>
-                <option value="1">Qty 1</option>
-                <option value="2">Qty 2</option>
-                <option value="3">Qty 3</option>
+                <option value="0">S</option>
+                <option value="1">M</option>
+                <option value="2">L</option>
               </select>
             </span>
             <div class="btn-area">
-              <a href="potepan/unfinished" class="btn btn-primary btn-block">Add to cart <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              <a href="potepan/unfinished" class="btn btn-primary btn-block">カートに追加<i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190319101936) do
+ActiveRecord::Schema.define(version: 20190320094021) do
 
   create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "slug", null: false
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20190319101936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.text "postal"
+    t.string "streetaddress"
+    t.text "phone"
     t.index ["email"], name: "index_potepan_users_on_email", unique: true
   end
 

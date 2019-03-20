@@ -1,0 +1,30 @@
+<% provide(:title, "登録情報編集") %>
+<div class="text-center" id='sign_up_box'>
+  <h1>編集フォーム</h1>
+  <div class="container">
+    <%= form_for(@user, url: potepan_user_path, method: :patch) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group">
+        <%= f.label :名前 %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メール %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"電話番号 (ハイフンなし半角数字)" %>
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"郵便番号 (ハイフンなし半角数字)" %>
+        <%= f.text_field :postal, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :住所 %>
+        <%= f.text_field :streetaddress, class: 'form-control' %>
+      </div>
+      <%= f.submit "編集", class: "btn btn-info btn-block" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<% provide(:title, "ダッシュボード") %>
+
+<!-- LIGHT SECTION -->
+<section class="lightSection clearfix pageHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="page-title">
+          <h2>アカウント設定</h2>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <ol class="breadcrumb pull-right">
+          <li>
+            <%= link_to 'Home', potepan_path %>
+          </li>
+          <li class="active">アカウント設定</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mainContent clearfix aboutUsInfo">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h3>登録情報</h3>
+      </div>
+      <p class="lead">名前 : <%= @user.name %></p>
+      <p class="lead">メールアドレス : <%= @user.email %></p>
+    </div>
+  </div>
+</section>
+
+<section class="mainContent clearfix aboutUsInfo">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h3>注文履歴</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mainContent clearfix aboutUsInfo">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h3>お気に入りに登録した商品</h3>
+      </div>
+    </div>
+  </div>
+</section>

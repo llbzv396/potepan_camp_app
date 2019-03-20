@@ -2,13 +2,24 @@
 <div class="footer clearfix">
   <div class="container">
     <div class="row">
-      <div class="newsletter clearfix">
-        <h4>Newsletter</h4>
-        <h3>Sign up now</h3>
-        <p>Enter your email address and get notified about new products. We hate spam!</p>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="your email address" aria-describedby="basic-addon2">
-          <a href="potepan/unfinished" class="input-group-addon" id="basic-addon2">go <i class="glyphicon glyphicon-chevron-right"></i></a>
+      <div class="col-sm-6">
+        <div class="footerLink">
+          <ul class="list-unstyled">
+            <li class='footer_parts'><%= link_to '運営会社', potepan_about_us_path %></li>
+            <li class='footer_parts'><%= link_to 'プライバシーポリシー', potepan_privacy_policy_path %></li>
+            <li class='footer_parts'><%= link_to '特定商品取引法', potepan_tokushoho_path %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="newsletter clearfix">
+          <h4>Newsletter</h4>
+          <h3>Sign up now</h3>
+          <p>Enter your email address and get notified about new products. We hate spam!</p>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="your email address" aria-describedby="basic-addon2">
+            <a href="potepan/unfinished" class="input-group-addon" id="basic-addon2">go <i class="glyphicon glyphicon-chevron-right"></i></a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,26 @@
+<% provide(:title, "会員登録") %>
+<div class="text-center" id='sign_up_box'>
+  <h1>会員登録フォーム</h1>
+  <div class="container">
+    <%= form_for(@user, url: potepan_users_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group">
+        <%= f.label :名前 %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メール %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :パスワード %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :パスワードの確認 %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <%= f.submit "会員登録", class: "btn btn-info btn-block" %>
+    <% end %>
+  </div>
+</div>

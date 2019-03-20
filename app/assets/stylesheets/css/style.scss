@@ -885,10 +885,12 @@ body.bodyColor.container {
   color: #acacac;
   font-size: 12px;
   line-height: 20px;
+  margin: 20px;
 }
 .footer .footerLink ul li a {
   color: #acacac;
-  font-size: 12px;
+  font-size: 20px;
+  padding: 10px;
   line-height: 20px;
 }
 .footer .footerLink ul li a:hover {
@@ -4857,11 +4859,25 @@ body.bodyColor.container {
 }
 
 
-// #sorry_comment {
-//   text-align: center;
-// }
-//
-// #sorry_img {
-//   width: 100%;
-//   padding: 20px;
-// }
+#sorry_comment {
+  text-align: center;
+}
+
+#sorry_img {
+  width: 100%;
+  padding: 20px;
+}
+
+#sign_up_box {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#signup_confirmation {
+  margin: 15px;
+  font-size: 20px;
+}
+
+#signup_confirmation a {
+  color: #87cefa;
+}

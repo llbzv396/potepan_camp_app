@@ -6,3 +6,5 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワードの確認"
+        postal: "郵便番号"
+        phone: "電話番号"

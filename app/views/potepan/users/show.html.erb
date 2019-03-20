@@ -25,29 +25,31 @@
   <div class="container">
     <div class="row">
       <div class="page-header">
-        <h3>登録情報</h3>
+        <h3 class='user_head'>登録情報</h3>
+        <h4 class="pull-right"><%= link_to '編集', edit_potepan_user_path, id: 'user_edit_link' %></h4>
       </div>
-      <p class="lead">名前 : <%= @user.name %></p>
-      <p class="lead">メールアドレス : <%= @user.email %></p>
+      <p class="user_data">名前 : <%= @user.name %></p>
+      <p class="user_data">メールアドレス : <%= @user.email %></p>
+      <p class="user_data">電話番号 : <%= @user.phone %></p>
+      <p class="user_data">郵便番号 : <%= @user.postal %></p>
+      <p class="user_data">住所 : <%= @user.streetaddress %></p>
     </div>
   </div>
 </section>
-
 <section class="mainContent clearfix aboutUsInfo">
   <div class="container">
     <div class="row">
       <div class="page-header">
-        <h3>注文履歴</h3>
+        <h3 class='user_head'>お気に入りに登録した商品</h3>
       </div>
     </div>
   </div>
 </section>
-
 <section class="mainContent clearfix aboutUsInfo">
   <div class="container">
     <div class="row">
       <div class="page-header">
-        <h3>お気に入りに登録した商品</h3>
+        <h3 class='user_head'>注文履歴</h3>
       </div>
     </div>
   </div>

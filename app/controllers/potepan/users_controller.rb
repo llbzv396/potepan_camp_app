@@ -18,6 +18,20 @@ class Potepan::UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = Potepan::User.find(params[:id])
+  end
+
+  def update
+    @user = Potepan::User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "登録情報を更新しました"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "退会手続きが完了しました"
@@ -27,6 +41,6 @@ class Potepan::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:potepan_user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:potepan_user).permit(:name, :email, :password, :password_confirmation, :postal, :streetaddress, :phone)
   end
 end

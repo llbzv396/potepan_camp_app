@@ -16,3 +16,6 @@ AllCops:
 
 Airbnb/OptArgParameters:
   Enabled: false
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false

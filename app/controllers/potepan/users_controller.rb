@@ -1,5 +1,4 @@
 class Potepan::UsersController < ApplicationController
-
   def show
     @user = Potepan::User.find(params[:id])
   end

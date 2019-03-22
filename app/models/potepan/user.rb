@@ -8,7 +8,11 @@ class Potepan::User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :postal, length: { is: 7, message: 'は７桁の数字で入力してください' }, allow_nil: true
-  VALID_PHONE_REGEX = /\A(((0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1}|[5789]0[-(]?\d{4})[-)]?)|\d{1,4}\-?)\d{4}|0120[-(]?\d{3}[-)]?\d{3})\z/
-  validates :phone, format: { with: VALID_PHONE_REGEX, message: "が正しく入力されていません"}, allow_nil: true
-  validates :streetaddress, length: { minimum: 1, message: "が正しく入力されていません" }, allow_nil: true
+  VALID_PHONE_REGEX = /\A0[789]0\d{8}\z/
+  validates :phone, format: { with: VALID_PHONE_REGEX, message: "が正しく入力されていません" },
+                    allow_nil: true
+  VALID_STREET_ADDRESS_REGEX = /.+[都道府県].+[市区町村郡].+/
+  validates :streetaddress, presence: true,
+                            format: { with: VALID_STREET_ADDRESS_REGEX, message: "が正しく入力されていません" },
+                            allow_nil: true
 end

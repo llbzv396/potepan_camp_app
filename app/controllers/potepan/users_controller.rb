@@ -41,6 +41,8 @@ class Potepan::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:potepan_user).permit(:name, :email, :password, :password_confirmation, :postal, :streetaddress, :phone)
+    params.require(:potepan_user).permit(:name, :email, :password,
+                                         :password_confirmation,
+                                         :postal, :streetaddress, :phone)
   end
 end

@@ -8,3 +8,4 @@ ja:
         password_confirmation: "パスワードの確認"
         postal: "郵便番号"
         phone: "電話番号"
+        streetaddress: "住所"

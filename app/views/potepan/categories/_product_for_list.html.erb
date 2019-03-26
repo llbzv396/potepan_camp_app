@@ -7,7 +7,7 @@
       <div class="media-body">
         <h4 class="media-heading"><%= link_to product.name, potepan_product_path(product) %></h4>
         <p><%= product.description %></p>
-        <h3><%= product.display_price %></h3>
+        <h3><%= (product.price * 110).to_i %>円</h3>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default" data-toggle="modal" data-target=".login-modal"><i class="fa fa-heart" aria-hidden="true"></i></button>
           <button type="button" class="btn btn-default" onclick="location.href='cart-page.html';"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>

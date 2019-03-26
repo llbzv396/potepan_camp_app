@@ -161,3 +161,15 @@ function FormSubmit() {
     target.method = "post";
     target.submit();
   };
+
+$('[name=guiest_id1]').change(function() {
+  var id = $('.id_data').val();
+  var type = $('.type_data').val();
+  var color = $('.color_data').val();
+  var sort = $('.select-drop').val();
+  if (type === '' && color === '') {
+    window.location.href = `/potepan/categories/${id}?sort=${sort}`;
+  } else {
+    window.location.href = `/potepan/categories/${id}/?sort=${sort}&type=${type}&color=${color}`
+  }
+});

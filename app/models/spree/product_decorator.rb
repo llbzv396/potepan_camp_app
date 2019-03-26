@@ -10,4 +10,8 @@ Spree::Product.class_eval do
     joins(variants_including_master: :option_values).
       where("spree_option_values.name = ? AND spree_option_values.option_type_id = ?", value, type)
   }
+  scope :filter_by_taxon, ->(taxon) {
+    includes(:classifications).
+      where("spree_products_taxons.taxon_id" => taxon.self_and_descendants.pluck(:id))
+  }
 end

@@ -2,12 +2,13 @@
   <div class="row filterArea">
     <div class="col-xs-6">
       <select name="guiest_id1" id="guiest_id1" class="select-drop">
-        <option value="0">人気が高い</option>
-        <option value="1">発売日が新しい</option>
-        <option value="2">発売日が古い</option>
-        <option value="3">値段が安い</option>
-        <option value="3">値段が高い</option>
+        <% @numbers.zip(@sort_list) do |number, sort| %>
+          <option value="<%= number %>" class='sort_tag' id="<%= number %>"><%= sort %></option>
+        <% end %>
       </select>
+      <input type='hidden' value="<%= params[:id] %>" class='id_data'>
+      <input type='hidden' value="<%= params[:type] %>" class='type_data'>
+      <input type='hidden' value="<%= params[:color] %>" class='color_data'>
     </div>
     <div class="col-xs-6">
       <div class="btn-group pull-right" role="group">

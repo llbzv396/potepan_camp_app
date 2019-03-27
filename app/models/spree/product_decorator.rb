@@ -6,9 +6,13 @@ Spree::Product.class_eval do
   scope :including_images_prices, -> {
     includes(master: [:images, :default_price])
   }
-  scope :filter_by_color, ->(value, type) {
+  scope :filter_by_size, ->(value) {
     joins(variants_including_master: :option_values).
-      where("spree_option_values.name = ? AND spree_option_values.option_type_id = ?", value, type)
+      where("spree_option_values.name = ? AND spree_option_values.option_type_id = ?", value, 1)
+  }
+  scope :filter_by_color, ->(value) {
+    joins(variants_including_master: :option_values).
+      where("spree_option_values.name = ? AND spree_option_values.option_type_id = ?", value, 2)
   }
   scope :filter_by_taxon, ->(taxon) {
     includes(:classifications).

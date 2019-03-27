@@ -5,6 +5,12 @@ RSpec.feature 'Categories', type: :feature do
   let!(:root_taxon) { taxonomy.root }
   let!(:color_value1) { create(:option_value, name: "Red", presentation: "Red") }
   let!(:color_value2) { create(:option_value, name: "Blue", presentation: "Blue") }
+  let!(:size_option) do
+    create(:option_type, option_values: [],
+                         id: 1,
+                         name: "Size",
+                         presentation: "Size")
+  end
   let!(:color_option) do
     create(:option_type, option_values: [],
                          id: 2,

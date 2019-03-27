@@ -164,12 +164,14 @@ function FormSubmit() {
 
 $('[name=guiest_id1]').change(function() {
   var id = $('.id_data').val();
-  var type = $('.type_data').val();
+  var size = $('.size_data').val();
   var color = $('.color_data').val();
   var sort = $('.select-drop').val();
-  if (type === '' && color === '') {
+  if (size == '' && color == '') {
     window.location.href = `/potepan/categories/${id}?sort=${sort}`;
-  } else {
-    window.location.href = `/potepan/categories/${id}/?sort=${sort}&type=${type}&color=${color}`
+  } else if (size != '') {
+    window.location.href = `/potepan/categories/${id}?sort=${sort}&size=${size}`
+  } else if (color != '') {
+    window.location.href = `/potepan/categories/${id}?sort=${sort}&color=${color}`
   }
 });

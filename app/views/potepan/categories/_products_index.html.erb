@@ -6,9 +6,16 @@
           <option value="<%= number %>" class='sort_tag' id="<%= number %>"><%= sort %></option>
         <% end %>
       </select>
+      <div class="btn-group pull-right" role="group">
+        <%= link_to potepan_category_path(params[:id]) do %>
+          <button type="button" class="btn btn-default">
+            <span>リセット</span>
+          </button>
+        <% end %>
+      </div>
       <input type='hidden' value="<%= params[:id] %>" class='id_data'>
-      <input type='hidden' value="<%= params[:type] %>" class='type_data'>
       <input type='hidden' value="<%= params[:color] %>" class='color_data'>
+      <input type='hidden' value="<%= params[:size] %>" class='size_data'>
     </div>
     <div class="col-xs-6">
       <div class="btn-group pull-right" role="group">

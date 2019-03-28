@@ -33,16 +33,53 @@ class Potepan::OrdersController < ApplicationController
     redirect_to potepan_order_path(order.id)
   end
 
-  def update
-  end
-
-  def edit
-  end
-
   def destroy
     order_id = params[:id]
     product_id = params[:product_id]
     Potepan::OrderedProduct.find_by(order_id: order_id, product_id: product_id).delete
     redirect_to potepan_order_path(order_id)
+  end
+
+  def step1
+  end
+
+  def data_set
+    user = Potepan::Order.find(params[:id]).user
+    if params[:check_name].nil?
+      name = params[:name]
+    else
+      name = user.name
+    end
+    if params[:check_email].nil?
+      email = params[:email]
+    else
+      email = user.email
+    end
+    if params[:check_address].nil?
+      streetaddress = params[:address]
+    else
+      streetaddress = user.streetaddress
+    end
+    if params[:check_phone].nil?
+      phone = params[:phone]
+    else
+      phone = user.phone
+    end
+    if params[:check_postal].nil?
+      postal = params[:postal]
+    else
+      postal = user.postal
+    end
+    redirect_to step2_potepan_order_path
+  end
+
+  def step2
+  end
+
+  def step3
+  end
+
+  def complete
+    @order = Potepan::Order.find(params[:id])
   end
 end

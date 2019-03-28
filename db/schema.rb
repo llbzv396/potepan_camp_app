@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190328053146) do
+ActiveRecord::Schema.define(version: 20190328111323) do
 
   create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "slug", null: false
@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(version: 20190328053146) do
   end
 
   create_table "potepan_orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "item_total"
-    t.integer "total_price"
     t.text "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

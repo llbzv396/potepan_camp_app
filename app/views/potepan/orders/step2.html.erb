@@ -1,26 +1,7 @@
 <!-- SITE TITTLE -->
-<% provide(:title, "Step # 03") %>
+<% provide(:title, "お支払い方法登録") %>
 
-<!-- LIGHT SECTION -->
-<section class="lightSection clearfix pageHeader">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="page-title">
-          <h2>お支払い方法</h2>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <ol class="breadcrumb pull-right">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li class="active">お支払い方法</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
+<%= render 'shared/page_header', { title: 'お支払い方法', active: 'お支払い方法'} %>
 
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix stepsWrapper">
@@ -100,8 +81,8 @@
             <div class="col-xs-12">
               <div class="well well-lg clearfix">
                 <ul class="pager">
-                  <li class="previous"><a href="checkout_step_1.html">戻る</a></li>
-                  <li class="next"><a href="checkout_step_3.html">次へ</a></li>
+                  <li class="previous"><%= link_to '戻る', step1_potepan_order_path(params[:id]) %></li>
+                  <li class="next"><%= link_to '次へ', step3_potepan_order_path(params[:id]) %></li>
                 </ul>
               </div>
             </div>

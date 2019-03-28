@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :products, param: :slug_or_id, only: [:show]
     resources :categories,                   only: [:show]
     resources :users
+    resources :orders
     get    '/login',                to: 'sessions#new'
     post   '/login',                to: 'sessions#create'
     delete '/logout',               to: 'sessions#destroy'
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
     get :index,                     to: 'home#index'
     get :unfinished,                to: 'home#unfinished'
     post :unfinished,               to: 'home#unfinished'
-    get :cart_page,                 to: 'sample#cart_page'
     get :checkout_step_1,           to: 'sample#checkout_step_1'
     get :checkout_step_2,           to: 'sample#checkout_step_2'
     get :checkout_step_3,           to: 'sample#checkout_step_3'

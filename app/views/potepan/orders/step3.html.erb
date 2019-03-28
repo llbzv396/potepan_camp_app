@@ -32,21 +32,6 @@
                 <h4>入力内容確認</h4>
               </div>
             </div>
-            <!-- <div class="col-sm-6 col-xs-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">ご請求先情報</h4>
-                </div>
-                <div class="panel-body">
-                  <address>
-                    <strong>Adam Smith</strong><br>
-                    9/4 C Babor Road, Mohammad pur, <br>
-                    Shyamoli, Dhaka <br>
-                    Bangladesh
-                  </address>
-                </div>
-              </div>
-            </div> -->
             <div class="col-sm-12 col-xs-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -54,10 +39,9 @@
                 </div>
                 <div class="panel-body">
                   <address>
-                    <strong>Adam Smith</strong><br>
-                    9/4 C Babor Road, Mohammad pur, <br>
-                    Shyamoli, Dhaka <br>
-                    Bangladesh
+                    <strong>名前：<%= @user.name %></strong><br>
+                    <strong>住所：<%= @checkout.streetaddress %></strong><br>
+                    <strong>連絡先：<%= @checkout.phone %></strong><br>
                   </address>
                 </div>
               </div>
@@ -87,29 +71,6 @@
               </div>
             </div>
             <div class="col-xs-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">注文詳細</h4>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-4 col-xs-12">
-                      <address>
-                        <a href="#">Email: adamsmith@bigbag.com</a> <br>
-                        <span>Phone: +884 5452 6432</span>
-                      </address>
-                    </div>
-                    <div class="col-sm-8 col-xs-12">
-                      <address>
-                        <span>Additional Information: </span><br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                      </address>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12">
               <div class="cartListInner">
                 <div class="table-responsive">
                   <table class="table">
@@ -123,45 +84,29 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="col-xs-2">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <span class="cartImage"><%= image_tag("products/cart-image.jpg", :class => "media-left media-object", :alt => "cart-Image") %></span>
-                        </td>
-                        <td class="col-xs-4">Italian Winter Hat</td>
-                        <td class="col-xs-2">$ 99.00</td>
-                        <td class="col-xs-2"><input type="text" placeholder="1"></td>
-                        <td class="col-xs-2">$ 99.00</td>
-                      </tr>
-                      <tr>
-                        <td class="col-xs-2">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <span class="cartImage"><%= image_tag("products/cart-image.jpg", :class => "media-left media-object", :alt => "cart-Image") %></span>
-                        </td>
-                        <td class="col-xs-4">Italian Winter Hat</td>
-                        <td class="col-xs-2">$ 99.00</td>
-                        <td class="col-xs-2"><input type="text" placeholder="1"></td>
-                        <td class="col-xs-2">$ 99.00</td>
-                      </tr>
-                      <tr>
-                        <td class="col-xs-2">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <span class="cartImage"><%= image_tag("products/cart-image.jpg", :class => "media-left media-object", :alt => "cart-Image") %></span>
-                        </td>
-                        <td class="col-xs-4">Italian Winter Hat</td>
-                        <td class="col-xs-2">$ 99.00</td>
-                        <td class="col-xs-2"><input type="text" placeholder="1"></td>
-                        <td class="col-xs-2">$ 99.00</td>
-                      </tr>
+                      <% @products.each do |product| %>
+                        <tr>
+                          <td class="col-xs-2">
+                            <button type="button" class="close">
+                              <span><%= link_to '×', potepan_order_path(params[:id], product_id: product.id), method: :delete %></span>
+                            </button>
+                            <span class="cartImage"><%= image_tag product.display_image.attachment.url(:small) , :alt => product.name %></span>
+                          </td>
+                          <td class="col-xs-4"><%= product.name %></td>
+                          <td class="col-xs-2"><%= (product.price * 110).to_i %>円</td>
+                          <td class="col-xs-2"><input type="text" id='<%= product.id %>' placeholder="<%= 1 %>"></td>
+                          <td class="col-xs-2"><%= (product.price * 110).to_i %>円</td>
+                        </tr>
+                      <% end %>
                     </tbody>
                   </table>
                 </div>
                 <div class="row totalAmountArea">
                   <div class="col-sm-4 col-sm-offset-8 col-xs-12">
                     <ul class="list-unstyled">
-                      <li>小計 <span>792円</span></li>
-                      <li>消費税 <span>18円</span></li>
-                      <li>総計 <span class="grandTotal">810円</span></li>
+                      <li>小計 <span><%= @item_total %>円</span></li>
+                      <li>消費税 <span><%= (@item_total * 0.08).to_i %>円</span></li>
+                      <li>総計 <span class="grandTotal"><%= (@item_total * 1.08).to_i %>円</span></li>
                     </ul>
                   </div>
                 </div>

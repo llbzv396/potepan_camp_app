@@ -70,7 +70,7 @@ class Potepan::CategoriesController < ApplicationController
 
     elsif filtered_by_color?
       @products = Spree::Product.filter_by_taxon(@taxon).
-      filter_by_color(option_value(params[:color]).name).
+        filter_by_color(option_value(params[:color]).name).
         including_images_prices.order("available_on DESC")
 
     elsif sorted?

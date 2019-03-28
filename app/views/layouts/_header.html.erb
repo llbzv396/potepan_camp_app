@@ -76,13 +76,15 @@
                   <% end %>
                 </ul>
               </li>
+              <% if logged_in? %>
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
                   <li>カート</li>
-                  <li><%= link_to '中身を確認', potepan_cart_page_path %></li>
+                  <li><%= link_to '中身を確認', potepan_order_path(@order_id) %></li>
                   <li><%= link_to '購入手続きに進む', potepan_checkout_step_1_path %></li>
                 </ul>
               </li>
+              <% end %>
             </ul>
           </li>
         </ul>

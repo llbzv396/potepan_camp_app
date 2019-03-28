@@ -58,7 +58,7 @@
           </select>
         </span>
         <div class="btn-area">
-          <%= link_to potepan_unfinished_path, class: 'btn btn-primary btn-block' do %>
+          <%= link_to potepan_orders_path(id: product.id ), method: :post, class: 'btn btn-primary btn-block' do %>
             カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
           <% end %>
         </div>

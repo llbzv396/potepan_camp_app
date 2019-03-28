@@ -38,4 +38,11 @@ class Potepan::OrdersController < ApplicationController
 
   def edit
   end
+
+  def destroy
+    order_id = params[:id]
+    product_id = params[:product_id]
+    Potepan::OrderedProduct.find_by(order_id: order_id, product_id: product_id).delete
+    redirect_to potepan_order_path(order_id)
+  end
 end

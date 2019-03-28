@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :products, param: :slug_or_id, only: [:show]
     resources :categories,                   only: [:show]
     resources :users
-    resources :orders
+    resources :orders do
+      member do
+        get :step1, :step2, :step3, :complete
+      end
+    end
     get    '/login',                to: 'sessions#new'
     post   '/login',                to: 'sessions#create'
     delete '/logout',               to: 'sessions#destroy'
@@ -18,13 +22,10 @@ Rails.application.routes.draw do
     get :index,                     to: 'home#index'
     get :unfinished,                to: 'home#unfinished'
     post :unfinished,               to: 'home#unfinished'
-    get :checkout_step_1,           to: 'sample#checkout_step_1'
-    get :checkout_step_2,           to: 'sample#checkout_step_2'
-    get :checkout_step_3,           to: 'sample#checkout_step_3'
-    get :checkout_complete,         to: 'sample#checkout_complete'
     get :about_us,                  to: 'sample#about_us'
     get :tokushoho,                 to: 'sample#tokushoho'
     get :privacy_policy,            to: 'sample#privacy_policy'
+    post '/orders/:id/step1',       to: 'orders#data_set'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

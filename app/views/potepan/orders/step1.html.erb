@@ -1,0 +1,78 @@
+<!-- SITE TITTLE -->
+<% provide(:title, "お届け先情報登録") %>
+
+<%= render 'shared/page_header', { title: 'お届け先情報', active: 'お届け先情報'} %>
+
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix stepsWrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper clearfix stepsPage">
+          <div class="row progress-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 progress-wizard-step complete">
+              <div class="text-center progress-wizard-stepnum">お届け先情報</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <i class="progress-wizard-dot"></i>
+            </div>
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">お支払い方法</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <i class="progress-wizard-dot"></i>
+            </div>
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">入力内容確認</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <i class="progress-wizard-dot"></i>
+            </div>
+          </div>
+          <%= form_tag(step1_potepan_order_path) do %>
+            <div class="col-xs-12">
+              <div class="page-header">
+                <h4>入力フォーム</h4>
+              </div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <%= label_tag :name, '名前' %>
+              <%= text_field_tag 'name', '' ,class: 'form-control' %>
+              <div class='use_checkbox'><%= check_box_tag :check_name %></div>
+              <div class='use_checkbox_label'><%= label_tag :check_name, "登録済みの名前を使う" %></div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <%= label_tag :email, 'メールアドレス' %>
+              <%= text_field_tag 'email', '' ,class: 'form-control' %>
+              <div class='use_checkbox'><%= check_box_tag :check_email %></div>
+              <div class='use_checkbox_label'><%= label_tag :check_email, "登録済みのメールアドレスを使う" %></div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <%= label_tag :postal, '郵便番号' %>
+              <%= text_field_tag 'postal', '' ,class: 'form-control' %>
+              <div class='use_checkbox'><%= check_box_tag :check_postal %></div>
+              <div class='use_checkbox_label'><%= label_tag :check_postal, "登録済みの郵便番号を使う" %></div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <%= label_tag :address, '住所' %>
+              <%= text_field_tag 'address', '' ,class: 'form-control' %>
+              <div class='use_checkbox'><%= check_box_tag :check_address %></div>
+              <div class='use_checkbox_label'><%= label_tag :check_address, "登録済みの住所を使う" %></div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <%= label_tag :phone, '電話番号' %>
+              <%= text_field_tag 'phone', '' ,class: 'form-control' %>
+              <div class='use_checkbox'><%= check_box_tag :check_phone %></div>
+              <div class='use_checkbox_label'><%= label_tag :check_phone, "登録済みの電話番号を使う" %></div>
+            </div>
+            <div class="col-xs-12">
+              <div class="well well-lg clearfix">
+                <ul class="pager">
+                  <li class="previous"><%= link_to '戻る', potepan_order_path(params[:id]) %></li>
+                  <li class="next"><%= submit_tag('次へ', class: 'use_data_submit') %></li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

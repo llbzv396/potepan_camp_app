@@ -81,7 +81,7 @@
                 <ul class="list-unstyled">
                   <li>カート</li>
                   <li><%= link_to '中身を確認', potepan_order_path(@order_id) %></li>
-                  <li><%= link_to '購入手続きに進む', potepan_checkout_step_1_path %></li>
+                  <li><%= link_to '購入手続きに進む', step1_potepan_order_path(@order_id) %></li>
                 </ul>
               </li>
               <% end %>

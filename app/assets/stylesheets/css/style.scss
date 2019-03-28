@@ -4896,3 +4896,31 @@ p.user_data {
   text-decoration: underline;
   font-weight: bold;
 }
+
+.use_checkbox {
+  margin-top: 3px;
+  float:left;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.use_checkbox_label {
+  padding-top: 5px;
+}
+
+.use_data_submit {
+  width: 136px;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    height: 45px;
+    line-height: 45px;
+    background-color: #47bac1;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    float: right;
+}

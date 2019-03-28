@@ -1,0 +1,33 @@
+<!-- SITE TITTLE -->
+<% provide(:title, "購入確定") %>
+
+<%= render 'shared/page_header', { title: '購入確定', active: '購入確定'} %>
+
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix setp5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="thanksContent">
+          <h2>THANK YOU !! <small>ご注文ありがとうございます。</small></h2>
+          <h3>問い合わせ先</h3>
+          <div class="thanksInner">
+            <div class="row">
+              <div class="col-sm-6 col-xs-12 tableBlcok">
+                <address>
+                  <span>メールアドレス:</span> test@example.com <br>
+                  <span>電話番号:</span> XXX-XXXX-XXXX
+                </address>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <div class="well">
+                  <h2><small>Order ID</small><%= @order.id %></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -79,7 +79,7 @@ class Potepan::OrdersController < ApplicationController
     if @checkout.save
       redirect_to step2_potepan_order_path
     else
-      flash[:danger] = 'お届け先情報を登録に失敗しました'
+      flash.now[:danger] = 'お届け先情報を登録に失敗しました'
       render 'step1'
     end
   end

@@ -6,8 +6,9 @@
         <%= link_to potepan_unfinished_path, class: 'btn btn-default' do %>
           <i class="fa fa-heart"></i>
         <% end %>
+      </li>
       <li>
-        <%= link_to potepan_unfinished_path, class: 'btn btn-default' do %>
+        <%= link_to potepan_orders_path(id: product.id ), method: :post, class: 'btn btn-default' do %>
           <i class="fa fa-shopping-cart"></i>
         <% end %>
       </li>

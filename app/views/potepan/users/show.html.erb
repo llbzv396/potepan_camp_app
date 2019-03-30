@@ -40,16 +40,23 @@
   <div class="container">
     <div class="row">
       <div class="page-header">
-        <h3 class='user_head'>お気に入りに登録した商品</h3>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="mainContent clearfix aboutUsInfo">
-  <div class="container">
-    <div class="row">
-      <div class="page-header">
         <h3 class='user_head'>注文履歴</h3>
+      </div>
+      <div class="ordered_products_box">
+        <% @orders.each do |order| %>
+          <div class="ordered_product_box">
+            <span class="box-title">注文番号：<%= order.id %></span>
+            <p class="user_data">購入日時：<%= bought_date(order.id) %></p>
+            <% @products = bought_products(order.ordered_products.pluck(:product_id)) %>
+            <% @products.each do |product| %>
+              <p class="user_data product_data">購入商品：<%= product.name %></p>
+              <p class="user_data product_data">商品単価：<%= (product.price * 110).to_i  %> 円</p>
+              <div class="ordered_products_image"><%= image_tag product.images.first.attachment.url(:small)  %></div>
+            <% end %>
+            <p class="user_data">合計金額：<%= (bought_price(@products) * 110).to_i  %> 円</p>
+          </div>
+          <br>
+        <% end %>
       </div>
     </div>
   </div>

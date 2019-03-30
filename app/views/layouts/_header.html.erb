@@ -6,15 +6,15 @@
       <div class="row">
         <div class="col-md-6 hidden-sm hidden-xs">
           <ul class="list-inline">
-            <li><a href="/potepan/unfinished"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="/potepan/unfinished"><i class="fa fa-facebook"></i></a></li>
+            <!-- <li><a href="/potepan/unfinished"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="/potepan/unfinished"><i class="fa fa-facebook"></i></a></li> -->
           </ul>
         </div>
         <div class="col-md-6 col-xs-12">
         <% if logged_in? %>
           <ul class="list-inline pull-right">
             <li><span>
-              <%= link_to 'アカウント設定', potepan_user_path(session[:user_id]) %>
+              <%= link_to 'アカウント設定', edit_potepan_user_path(current_user.id) %>
               <%= link_to "ログアウト", potepan_logout_path, method: :delete %>
             </span></li>
             <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
@@ -55,13 +55,6 @@
             <ul class="dropdown-menu row">
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>全ての商品</li>
-                  <li><%= link_to 'グリッド表示', potepan_category_path(1, format: "grid") %></li>
-                  <li><%= link_to 'リスト表示', potepan_category_path(1, format: "list") %></li>
-                </ul>
-              </li>
-              <li class="col-sm-3 col-xs-12">
-                <ul class="list-unstyled">
                   <li>カテゴリから</li>
                   <% @taxons.each do |taxon| %>
                     <li><%= link_to taxon.name, potepan_category_path(taxon.id) %></li>
@@ -76,15 +69,30 @@
                   <% end %>
                 </ul>
               </li>
-              <% if logged_in? %>
               <li class="col-sm-3 col-xs-12">
                 <ul class="list-unstyled">
                   <li>カート</li>
+                  <% if logged_in? %>
                   <li><%= link_to '中身を確認', potepan_order_path(@order_id) %></li>
                   <li><%= link_to '購入手続きに進む', step1_potepan_order_path(@order_id) %></li>
+                  <% else %>
+                  <li><%= link_to '中身を確認', potepan_login_path %></li>
+                  <li><%= link_to '購入手続きに進む', potepan_login_path %></li>
+                  <% end %>
                 </ul>
               </li>
-              <% end %>
+              <li class="col-sm-3 col-xs-12">
+                <ul class="list-unstyled">
+                  <li>ユーザー情報</li>
+                  <% if logged_in? %>
+                  <li><%= link_to '登録情報の確認', potepan_user_path(current_user.id) %></li>
+                  <li><%= link_to '購入履歴を見る', potepan_user_path(current_user.id) %></li>
+                  <% else %>
+                  <li><%= link_to '登録情報の確認', potepan_login_path %></li>
+                  <li><%= link_to '購入履歴を見る', potepan_login_path %></li>
+                  <% end %>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>

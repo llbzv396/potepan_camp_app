@@ -4924,3 +4924,41 @@ p.user_data {
     font-size: 15px;
     float: right;
 }
+
+.ordered_products_image {
+  width: 15%;
+  margin-bottom: 30px;
+}
+
+.user_data.product_data {
+  padding-right: 10px;
+  float: left;
+}
+
+.ordered_product_box {
+  border: solid;
+}
+
+.ordered_product_box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.ordered_product_box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+.ordered_product_box p {
+    margin: 10px;
+    padding: 0;
+}

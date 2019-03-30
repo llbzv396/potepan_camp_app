@@ -2,7 +2,7 @@
   <div class="panel-heading">サイズで絞り込み</div>
   <div class="panel-body">
     <ul class="list-unstyled">
-      <% @options.find(1).option_values.each do |size_option| %>
+      <% @options.find_by(presentation: 'Size').option_values.each do |size_option| %>
       <li>
         <%= link_to potepan_category_path(params[:id], size: size_option.id) do %>
           <%= size_option.presentation %><span>(<%= products_count_filtered_by_size(size_option.name) %>)</span>

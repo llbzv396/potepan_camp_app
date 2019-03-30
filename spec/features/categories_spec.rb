@@ -7,13 +7,11 @@ RSpec.feature 'Categories', type: :feature do
   let!(:color_value2) { create(:option_value, name: "Blue", presentation: "Blue") }
   let!(:size_option) do
     create(:option_type, option_values: [],
-                         id: 1,
                          name: "Size",
                          presentation: "Size")
   end
   let!(:color_option) do
     create(:option_type, option_values: [],
-                         id: 2,
                          name: "Color",
                          presentation: "Color")
   end

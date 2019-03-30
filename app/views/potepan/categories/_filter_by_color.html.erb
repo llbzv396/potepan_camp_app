@@ -2,7 +2,7 @@
   <div class="panel-heading">色で絞り込み</div>
   <div class="panel-body">
     <ul class="list-unstyled">
-      <% @options.find(2).option_values.each do |color_option| %>
+      <% @options.find_by(presentation: 'Color').option_values.each do |color_option| %>
       <li>
         <%= link_to potepan_category_path(params[:id], color: color_option.id) do %>
           <%= color_option.presentation %><span>(<%= products_count_filtered_by_color(color_option.name) %>)</span>

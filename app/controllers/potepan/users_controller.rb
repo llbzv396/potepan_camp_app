@@ -61,6 +61,6 @@ class Potepan::UsersController < ApplicationController
     products.each do |product|
       @total_price += product.price
     end
-    return @total_price
+    @total_price
   end
 end

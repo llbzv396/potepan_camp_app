@@ -9,3 +9,9 @@ ja:
         postal: "郵便番号"
         phone: "電話番号"
         streetaddress: "住所"
+      potepan/checkout:
+        name: "名前"
+        email: "メールアドレス"
+        postal: "郵便番号"
+        phone: "電話番号"
+        streetaddress: "住所"

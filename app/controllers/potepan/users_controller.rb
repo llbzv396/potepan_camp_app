@@ -1,6 +1,8 @@
 class Potepan::UsersController < ApplicationController
+  helper_method :bought_date, :bought_products, :bought_price
   def show
     @user = Potepan::User.find(params[:id])
+    @orders = Potepan::Order.where(user_id: current_user.id, state: 2)
   end
 
   def new
@@ -44,5 +46,21 @@ class Potepan::UsersController < ApplicationController
     params.require(:potepan_user).permit(:name, :email, :password,
                                          :password_confirmation,
                                          :postal, :streetaddress, :phone)
+  end
+
+  def bought_date(id)
+    Potepan::Checkout.find_by(order_id: id).created_at.strftime("%Y年 %m月 %d日")
+  end
+
+  def bought_products(id)
+    Spree::Product.where(id: id)
+  end
+
+  def bought_price(products)
+    @total_price = 0
+    products.each do |product|
+      @total_price += product.price
+    end
+    return @total_price
   end
 end

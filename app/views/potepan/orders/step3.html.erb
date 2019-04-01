@@ -94,8 +94,8 @@
                           </td>
                           <td class="col-xs-4"><%= product.name %></td>
                           <td class="col-xs-2"><%= (product.price * 110).to_i %>円</td>
-                          <td class="col-xs-2"><input type="text" id='<%= product.id %>' placeholder="<%= 1 %>"></td>
-                          <td class="col-xs-2"><%= (product.price * 110).to_i %>円</td>
+                          <td class="col-xs-2"><input type="text" id='<%= product.id %>' placeholder="<%= count = products_count(product.id) %>"></td>
+                          <td class="col-xs-2"><%= ((product.price * 110).to_i * count.to_i) %>円</td>
                         </tr>
                       <% end %>
                     </tbody>

@@ -1,33 +1,56 @@
 class Potepan::OrdersController < ApplicationController
+  helper_method :products_count
   def show
     @order = Potepan::Order.find(params[:id])
     product_ids = Potepan::OrderedProduct.where(order_id: params[:id]).pluck(:product_id)
     @products = Spree::Product.where(id: product_ids)
     @item_total = 0
     @products.each do |product|
-      @item_total += (product.price * 110).to_i
+      if products_count(product.id) == 1
+        @item_total += (product.price * 110).to_i
+      else
+        @item_total += products_count(product.id).to_i * (product.price * 110).to_i
+      end
     end
   end
 
   def create
     order = Potepan::Order.find_by(user_id: current_user.id, state: 1)
     product = Spree::Product.find(params[:id])
-    if order
-      tmp = Potepan::OrderedProduct.new
-      tmp.order_id = order.id
-      tmp.product_id = product.id
-      tmp.save
+    orderedproduct = Potepan::OrderedProduct.find_by(order_id: order.id , product_id: params[:id])
+
+    if order.present? && orderedproduct.present?
+      orderedproduct.count += 1
+    elsif order.present?
+      orderedproduct = Potepan::OrderedProduct.new
+      orderedproduct.order_id = order.id
+      orderedproduct.product_id = product.id
+      orderedproduct.count = 1
+      orderedproduct.save
     else
       order = Potepan::Order.new
       order.user_id = current_user.id
       order.state = 1
       order.save
-      tmp = Potepan::OrderedProduct.new
-      tmp.order_id = order.id
-      tmp.product_id = product.id
-      tmp.save
+      orderedproduct = Potepan::OrderedProduct.new
+      orderedproduct.order_id = order.id
+      orderedproduct.product_id = product.id
+      orderedproduct.count = 1
     end
-    redirect_to potepan_order_path(order.id)
+
+    if orderedproduct.save
+      redirect_to potepan_order_path(order.id)
+    else
+      redirect_to potepan_order_path(order.id)
+    end
+  end
+
+  def update
+    orderedproducts = Potepan::OrderedProduct.where(order_id: params[:id])
+    orderedproducts.each do |orderedproduct|
+      # orderedproduct.count =
+    end
+    redirect_to potepan_order_path(params[:id])
   end
 
   def destroy
@@ -95,7 +118,11 @@ class Potepan::OrdersController < ApplicationController
     @products = Spree::Product.where(id: product_ids)
     @item_total = 0
     @products.each do |product|
-      @item_total += (product.price * 110).to_i
+      if products_count(product.id) == 1
+        @item_total += (product.price * 110).to_i
+      else
+        @item_total += products_count(product.id).to_i * (product.price * 110).to_i
+      end
     end
   end
 
@@ -103,5 +130,10 @@ class Potepan::OrdersController < ApplicationController
     @order = Potepan::Order.find(params[:id])
     @order.state = 2
     @order.save
+  end
+
+  private
+  def products_count(id)
+    Potepan::OrderedProduct.find_by(product_id: id).count
   end
 end

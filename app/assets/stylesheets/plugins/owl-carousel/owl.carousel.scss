@@ -130,13 +130,13 @@
   display: block;
 }
 .owl-next span{
-  background: image-url('right-arrow.png') no-repeat top; /* change here */
+  background: url(images/right-arrow.png) no-repeat top; /* change here */
   width: 7px;
   height: 12px;
   display: block;
 }
 .owl-next:hover span{
-  background: iamge-url('right-arrow.png') no-repeat bottom; /* change here */
+  background: url(images/right-arrow.png) no-repeat bottom; /* change here */
   width: 7px;
   height: 12px;
   display: block;

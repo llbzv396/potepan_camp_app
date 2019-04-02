@@ -99,6 +99,7 @@ class Potepan::OrdersController < ApplicationController
       @checkout.postal = user.postal
     end
     @checkout.order_id = params[:id]
+    @checkout.state = 1
     if @checkout.save
       redirect_to step2_potepan_order_path
     else
@@ -128,8 +129,11 @@ class Potepan::OrdersController < ApplicationController
 
   def complete
     @order = Potepan::Order.find(params[:id])
+    @checkout = Potepan::Checkout.find_by(order_id: @order.id)
     @order.state = 2
     @order.save
+    @checkout.state = 2
+    @checkout.save
   end
 
   private

@@ -17,7 +17,7 @@ class Potepan::OrdersController < ApplicationController
   def create
     order = Potepan::Order.find_by(user_id: current_user.id, state: 1)
     product = Spree::Product.find(params[:id])
-    orderedproduct = Potepan::OrderedProduct.find_by(order_id: order.id , product_id: params[:id])
+    orderedproduct = Potepan::OrderedProduct.find_by(order_id: order.id, product_id: params[:id])
 
     if order.present? && orderedproduct.present?
       orderedproduct.count += 1
@@ -137,6 +137,7 @@ class Potepan::OrdersController < ApplicationController
   end
 
   private
+
   def products_count(id)
     Potepan::OrderedProduct.find_by(product_id: id).count
   end

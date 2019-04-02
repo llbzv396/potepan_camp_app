@@ -35,7 +35,7 @@ class Potepan::UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    Potepan::User.find(params[:id]).destroy
     flash[:success] = "退会手続きが完了しました"
     redirect_to potepan_path
   end

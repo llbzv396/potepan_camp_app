@@ -109,8 +109,8 @@ jQuery(document).ready(function() {
 
 //============================== PRICE SLIDER RANGER =========================
 jQuery(document).ready(function() {
-	var minimum = 2000;
-	var maximum = 30000;
+	var minimum = 1000;
+	var maximum = 5000;
 
 	$( "#price-range" ).slider({
 		range: true,
@@ -166,12 +166,29 @@ $('[name=guiest_id1]').change(function() {
   var id = $('.id_data').val();
   var size = $('.size_data').val();
   var color = $('.color_data').val();
+  var min = $('.min_data').val();
+	var max = $('.max_data').val();
   var sort = $('.select-drop').val();
-  if (size == '' && color == '') {
-    window.location.href = `/potepan/categories/${id}?sort=${sort}`;
-  } else if (size != '') {
-    window.location.href = `/potepan/categories/${id}?sort=${sort}&size=${size}`
-  } else if (color != '') {
-    window.location.href = `/potepan/categories/${id}?sort=${sort}&color=${color}`
-  }
+  var url = `/potepan/categories/${id}?sort=${sort}`
+
+  if (size != '')  { url = `${url}&size=${size}` }
+  if (color != '') { url = `${url}&color=${color}` }
+  if (min != '')   { url = `${url}&min=${min}`  }
+  if (max != '')   { url = `${url}&max=${max}` }
+  window.location.href = `${url}`
 });
+
+$('#price_button').click(function() {
+  var id = $('.id_data').val();
+  var size = $('.size_data').val();
+  var color = $('.color_data').val();
+  var sort = $('.select-drop').val();
+	var min = $( "#price-range" ) .slider( "values", 0 );
+	var max = $( "#price-range" ) .slider( "values", 1 );
+  var url = `/potepan/categories/${id}?min=${min}&max=${max}`
+
+  if (size != '')  { url = `${url}&size=${size}` }
+  if (color != '') { url = `${url}&color=${color}` }
+  if (sort != '')  { url = `${url}&sort=${sort}` }
+  window.location.href = `${url}`
+})

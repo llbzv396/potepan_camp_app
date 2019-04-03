@@ -197,3 +197,14 @@ $('a.quick_view_button').click(function() {
   var product_id = this.id
   $(`.quick_view_modal${product_id}`).modal("show");
 })
+
+$('td.products_count_box').change(function(){
+  var order_id = $('#order_id').val();
+  var url = `/potepan/orders/${order_id}?`
+  $('.product_ids').each(function(i, id){
+    var id = $(id).val();
+    var count = $(`#product_no_${id}_count`).val();
+    url = `${url}&${id}=${count}`
+  })
+  $('#count_update').attr("href", `${url}`)
+})

@@ -47,10 +47,13 @@ class Potepan::OrdersController < ApplicationController
   end
 
   def update
-    orderedproducts = Potepan::OrderedProduct.where(order_id: params[:id])
-    orderedproducts.each do |orderedproduct|
-      # orderedproduct.count =
+    product_ids = Potepan::OrderedProduct.where(order_id: params[:id]).pluck(:product_id)
+    product_ids.each do |product_id|
+      product = Potepan::OrderedProduct.find_by(order_id: params[:id], product_id: product_id)
+      product.count = params["#{product_id}"]
+      product.save
     end
+    flash[:success] = "カートの中身を最新の状態に更新しました"
     redirect_to potepan_order_path(params[:id])
   end
 
@@ -140,7 +143,7 @@ class Potepan::OrdersController < ApplicationController
   private
 
   def products_count(id)
-    Potepan::OrderedProduct.find_by(product_id: id).count
+    Potepan::OrderedProduct.find_by(order_id: params[:id], product_id: id).count
   end
 
   def check_logged_in

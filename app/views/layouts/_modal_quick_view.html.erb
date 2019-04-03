@@ -5,7 +5,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <div class="media">
           <div class="media-left">
-            <%= image_tag(product.images.first.attachment.url(:product), :class => "media-object", :alt => "Image") %>
+            <% product.images.each.with_index do |img| %>
+              <%= image_tag(img.attachment.url(:product), :class => "media-object", :alt => "Image") %>
+            <% end %>
           </div>
           <div class="media-body">
             <h2><%= product.name %></h2>

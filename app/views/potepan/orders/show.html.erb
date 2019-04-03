@@ -32,15 +32,21 @@
                       </td>
                       <td class="col-xs-4"><%= product.name %></td>
                       <td class="col-xs-2"><%= (product.price * 110).to_i %>円</td>
-                      <td class="col-xs-2"><input type="text" id='<%= product.id %>' placeholder="<%= count = products_count(product.id) %>"></td>
+                      <td class="col-xs-2 products_count_box">
+                        <input type="text" id='product_no_<%= product.id %>_count' value="<%= count = products_count(product.id) %>">
+                      </td>
                       <td class="col-xs-2"><%= ((product.price * 110).to_i * count.to_i) %>円</td>
                     </tr>
+                  <% end %>
+                  <input type='hidden' id='order_id' value="<%= params[:id] %>">
+                  <% @products.ids.each do |id| %>
+                    <input type="hidden" class='product_ids'  value="<%= id %>">
                   <% end %>
                 </tbody>
               </table>
             </div>
               <div class="updateArea">
-                <%= link_to 'アップデート', potepan_order_path(params[:id]), method: :patch, class: 'btn'%>
+                <%= link_to 'アップデート', potepan_order_path(params[:id]), method: :patch, class: 'btn', id: 'count_update'%>
               </div>
               <div class="totalAmountArea">
                 <div class="col-sm-4 col-sm-offset-8 col-xs-12">

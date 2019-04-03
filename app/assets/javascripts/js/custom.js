@@ -192,3 +192,8 @@ $('#price_button').click(function() {
   if (sort != '')  { url = `${url}&sort=${sort}` }
   window.location.href = `${url}`
 })
+
+$('a.quick_view_button').click(function() {
+  var product_id = this.id
+  $(`.quick_view_modal${product_id}`).modal("show");
+})

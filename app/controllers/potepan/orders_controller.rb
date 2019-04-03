@@ -1,5 +1,6 @@
 class Potepan::OrdersController < ApplicationController
   helper_method :products_count
+  before_action :check_logged_in
   def show
     @order = Potepan::Order.find(params[:id])
     product_ids = Potepan::OrderedProduct.where(order_id: params[:id]).pluck(:product_id)
@@ -140,5 +141,12 @@ class Potepan::OrdersController < ApplicationController
 
   def products_count(id)
     Potepan::OrderedProduct.find_by(product_id: id).count
+  end
+
+  def check_logged_in
+    unless logged_in?
+      flash[:danger] = "ログインしてください"
+      redirect_to potepan_path
+    end
   end
 end

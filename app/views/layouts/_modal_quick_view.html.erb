@@ -1,0 +1,31 @@
+<div class="modal fade quick-view quick_view_modal<%= product.id %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag(product.images.first.attachment.url(:product), :class => "media-object", :alt => "Image") %>
+          </div>
+          <div class="media-body">
+            <h2><%= product.name %></h2>
+            <h3><%= (product.price * 110).to_i %>円</h3>
+            <p><%= product.description %></p>
+            <span class="quick-drop">
+              <select name="guiest_id3" id="guiest_id3" class="select-drop">
+                <option value="0">S</option>
+                <option value="1">M</option>
+                <option value="2">L</option>
+              </select>
+            </span>
+            <div class="btn-area">
+              <%= link_to potepan_orders_path(id: product.id ), method: :post, class: 'btn btn-primary btn-block' do %>
+                カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

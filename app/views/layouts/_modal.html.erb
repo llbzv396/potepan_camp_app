@@ -59,32 +59,10 @@
 </div>
 
 <!-- PORDUCT QUICK VIEW MODAL -->
-<div class="modal fade quick-view" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <div class="media">
-          <div class="media-left">
-            <%= image_tag("img/products/quick-view/quick-view-01.jpg", :class => "media-object", :alt => "Image") %>
-          </div>
-          <div class="media-body">
-            <h2>サンプル商品名</h2>
-            <h3>値段</h3>
-            <p>説明</p>
-            <span class="quick-drop">
-              <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                <option value="0">S</option>
-                <option value="1">M</option>
-                <option value="2">L</option>
-              </select>
-            </span>
-            <div class="btn-area">
-              <a href="potepan/unfinished" class="btn btn-primary btn-block">カートに追加<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% if controller.controller_name == 'home' %>
+<%= render partial: 'layouts/modal_quick_view', collection: @lated_products, as: 'product' %>
+<% end %>
+
+<% if controller.controller_name == 'categories' %>
+<%= render partial: 'layouts/modal_quick_view', collection: @products, as: 'product' %>
+<% end %>

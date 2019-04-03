@@ -35,7 +35,7 @@
       <%= f.submit "編集", class: "btn btn-info btn-block" %>
     <% end %>
     <div class="unsubscribed-section">
-      <%= link_to '退会手続きはこちらから', potepan_user_path, method: :delete %>
+      <%= link_to '退会手続きはこちらから', potepan_user_path, method: :delete, data: {confirm: "本当に退会してよろしいですか？"} %>
     </div>
   </div>
 </div>

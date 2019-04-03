@@ -1,11 +1,19 @@
 <div class="col-md-9 col-sm-8 col-xs-12">
+  <div class="row">
+    <h3>現在の検索条件</h3>
+    <% @filtered_key.each do |key, value| %>
+       <li><%= key %>：<%= value %></li>
+    <% end %>
+  </div>
   <div class="row filterArea">
-    <div class="col-xs-6">
+    <div class="col-xs-4">
       <select name="guiest_id1" id="guiest_id1" class="select-drop">
         <% @numbers.zip(@sort_list) do |number, sort| %>
           <option value="<%= number %>" class='sort_tag' id="<%= number %>"><%= sort %></option>
         <% end %>
       </select>
+    </div>
+    <div class="col-xs-4">
       <div class="btn-group pull-right" role="group">
         <%= link_to potepan_category_path(params[:id]) do %>
           <button type="button" class="btn btn-default">
@@ -13,11 +21,8 @@
           </button>
         <% end %>
       </div>
-      <input type='hidden' value="<%= params[:id] %>" class='id_data'>
-      <input type='hidden' value="<%= params[:color] %>" class='color_data'>
-      <input type='hidden' value="<%= params[:size] %>" class='size_data'>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-4">
       <div class="btn-group pull-right" role="group">
         <%= link_to potepan_category_path(params[:id], format: "grid",
                                                        type: params[:type],
@@ -38,6 +43,13 @@
       </div>
     </div>
   </div>
+
+  <!-- JS用のhiddenデータ -->
+  <input type='hidden' value="<%= params[:id] %>" class='id_data'>
+  <input type='hidden' value="<%= params[:color] %>" class='color_data'>
+  <input type='hidden' value="<%= params[:size] %>" class='size_data'>
+  <input type='hidden' value="<%= params[:min] %>" class='min_data'>
+  <input type='hidden' value="<%= params[:max] %>" class='max_data'>
 
   <% if list_type? %>
     <div class="row productListSingle">

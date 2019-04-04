@@ -10,7 +10,8 @@ class Potepan::ProductsController < ApplicationController
   def add_favorite
     product = Spree::Product.find(params[:slug_or_id])
     user = Potepan::User.find(current_user.id)
-    if favorite = Potepan::Favorite.find_by(user_id: user.id, product_id: product.id)
+    favorite = Potepan::Favorite.find_by(user_id: user.id, product_id: product.id)
+    if favorite.present?
       flash[:danger] = "既にお気に入りに登録されています"
     else
       favorite = Potepan::Favorite.new

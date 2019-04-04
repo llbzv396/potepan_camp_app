@@ -17,7 +17,6 @@
               <%= link_to 'アカウント設定', edit_potepan_user_path(current_user.id) %>
               <%= link_to "ログアウト", potepan_logout_path, method: :delete %>
             </span></li>
-            <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
           </ul>
         <% else %>
           <ul class="list-inline pull-right">
@@ -25,7 +24,6 @@
               <%= link_to 'ログイン', potepan_login_path %>
               <%= link_to '新規登録', new_potepan_user_path %>
             </span></li>
-            <!-- <li><span><a data-toggle="modal" href='#login'>ログイン</a><span> </span><a data-toggle="modal" href='#signup'>新規作成</a></span></li> -->
           </ul>
         <% end %>
         </div>
@@ -87,6 +85,7 @@
                   <% if logged_in? %>
                   <li><%= link_to '登録情報の確認', potepan_user_path(current_user.id) %></li>
                   <li><%= link_to '購入履歴を見る', potepan_user_path(current_user.id) %></li>
+                  <li><%= link_to 'お気に入りを見る', potepan_user_path(current_user.id) %></li>
                   <% else %>
                   <li><%= link_to '登録情報の確認', potepan_login_path %></li>
                   <li><%= link_to '購入履歴を見る', potepan_login_path %></li>

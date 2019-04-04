@@ -1,5 +1,5 @@
 class Potepan::UsersController < ApplicationController
-  helper_method :bought_date, :bought_products, :bought_price
+  helper_method :bought_date, :bought_products, :bought_price, :bought_products_count
   def show
     @user = Potepan::User.find(params[:id])
     @orders = Potepan::Order.where(user_id: current_user.id, state: 2)
@@ -57,10 +57,15 @@ class Potepan::UsersController < ApplicationController
     Spree::Product.where(id: id)
   end
 
-  def bought_price(products)
+  def bought_products_count(product, order)
+    @count = Potepan::OrderedProduct.find_by(order_id: order.id, product_id: product.id).count
+  end
+
+  def bought_price(products, order)
     @total_price = 0
     products.each do |product|
-      @total_price += product.price
+      count = Potepan::OrderedProduct.find_by(order_id: order.id, product_id: product.id).count
+      @total_price += product.price * count
     end
     @total_price
   end

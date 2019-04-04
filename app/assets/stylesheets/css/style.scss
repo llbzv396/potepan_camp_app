@@ -4858,7 +4858,7 @@ body.bodyColor.container {
   height: 200px;
 }
 
-
+// =====unfinisheページ==========
 #sorry_comment {
   text-align: center;
 }
@@ -4888,15 +4888,15 @@ body.bodyColor.container {
   font-size: 20px;
 }
 
-p.user_data {
-  font-size: 20px;
-}
-
+// ==========フッターとかヘッダーとかユーザー登録ページ===========
 .aboutUsInfo .page-header .user_head {
   text-decoration: underline;
   font-weight: bold;
 }
 
+p.user_data {
+  font-size: 20px;
+}
 .use_checkbox {
   margin-top: 3px;
   float:left;
@@ -4925,9 +4925,19 @@ p.user_data {
     float: right;
 }
 
+.unsubscribed-section {
+  margin-top: 20px;
+    a {
+    color: #87cefa;
+    font-weight: normal;
+    font-size: 20px;
+  }
+}
+
+// ============ユーザー詳細ページ====================
 .ordered_products_image {
-  width: 15%;
-  margin-bottom: 30px;
+  width: 50%;
+  padding-bottom: 30px;
 }
 
 .user_data.product_data {
@@ -4941,8 +4951,7 @@ p.user_data {
 
 .ordered_product_box {
     position: relative;
-    margin: 2em 0;
-    padding: 0.5em 1em;
+    margin: 5px 5px;
     border: solid 3px #95ccff;
     border-radius: 8px;
 }
@@ -4963,11 +4972,7 @@ p.user_data {
     padding: 0;
 }
 
-.unsubscribed-section {
-  margin-top: 20px;
-    a {
-    color: #87cefa;
-    font-weight: normal;
-    font-size: 20px;
-  }
+.eq-height {
+  display: flex;
+  flex-wrap: wrap;
 }

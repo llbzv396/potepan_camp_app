@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/'
 
   namespace :potepan do
-    resources :products, param: :slug_or_id, only: [:show]
+    resources :products, param: :slug_or_id, only: [:show] do
+      member do
+        get :add_favorite
+        delete :remove_favorite
+      end
+    end
     resources :categories,                   only: [:show]
     resources :users
     resources :orders do

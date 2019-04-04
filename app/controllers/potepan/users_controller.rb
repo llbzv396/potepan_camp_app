@@ -3,6 +3,7 @@ class Potepan::UsersController < ApplicationController
   def show
     @user = Potepan::User.find(params[:id])
     @orders = Potepan::Order.where(user_id: current_user.id, state: 2)
+    @favorite_products = @user.favorites
   end
 
   def new

@@ -61,3 +61,22 @@
     </div>
   </div>
 </section>
+<section class="mainContent clearfix aboutUsInfo">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h3 class='user_head'>お気に入り</h3>
+      </div>
+      <% @favorite_products.each do |favorite| %>
+        <div class="ordered_product_box">
+          <p class="user_data product_data">商品名：<%= favorite.product.name  %></p>
+          <p class="user_data product_data">商品単価：<%= (favorite.product.price * 110).to_i   %> 円</p>
+          <p class="user_data product_data"><%= link_to 'お気に入りから削除', remove_favorite_potepan_product_path(favorite.product.id), method: :delete %></p>
+          <p class="user_data product_data">カートに追加</p>
+          <div class="ordered_products_image"><%= image_tag favorite.product.images.first.attachment.url(:small)  %></div>
+        </div>
+        <br>
+        <% end %>
+      </div>
+    </div>
+</section>

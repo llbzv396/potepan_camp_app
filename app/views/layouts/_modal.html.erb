@@ -66,3 +66,7 @@
 <% if controller.controller_name == 'categories' %>
 <%= render partial: 'layouts/modal_quick_view', collection: @products, as: 'product' %>
 <% end %>
+
+<% if controller.controller_name == 'products' %>
+<%= render partial: 'layouts/modal_quick_view', collection: @related_products, as: 'product' %>
+<% end %>

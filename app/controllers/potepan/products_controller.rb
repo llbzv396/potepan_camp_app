@@ -1,4 +1,5 @@
 class Potepan::ProductsController < ApplicationController
+  before_action :check_logged_in, only: [:add_favorite, :remove_favorite]
   COUNT_OF_RELATED_PRODUCTS = 4
   def show
     @product = Spree::Product.friendly.find(params[:slug_or_id])
@@ -23,12 +24,20 @@ class Potepan::ProductsController < ApplicationController
         flash[:danger] = "お気に入りに登録できませんでした"
       end
     end
-    redirect_to potepan_path
+    redirect_back(fallback_location: potepan_path)
   end
 
   def remove_favorite
     Potepan::Favorite.find_by(user_id: current_user.id, product_id: params[:slug_or_id]).delete
     flash[:danger] = "お気に入りから削除しました"
-    redirect_to potepan_path
+    redirect_back(fallback_location: potepan_path)
+  end
+
+  private
+  def check_logged_in
+    unless logged_in?
+      flash[:danger] = 'ログインしてください'
+      redirect_back(fallback_location: potepan_path)
+    end
   end
 end

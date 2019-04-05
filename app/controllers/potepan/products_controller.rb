@@ -13,18 +13,17 @@ class Potepan::ProductsController < ApplicationController
     user = Potepan::User.find(current_user.id)
     favorite = Potepan::Favorite.find_by(user_id: user.id, product_id: product.id)
     if favorite.present?
-      flash[:danger] = "既にお気に入りに登録されています"
+      render 'add_favorite_false_01'
     else
       favorite = Potepan::Favorite.new
       favorite.user_id = user.id
       favorite.product_id = product.id
       if favorite.save
-        flash[:success] = "お気に入りに追加しました"
+        render 'add_favorite'
       else
-        flash[:danger] = "お気に入りに登録できませんでした"
+        render 'add_favorite_false_02'
       end
     end
-    redirect_back(fallback_location: potepan_path)
   end
 
   def remove_favorite

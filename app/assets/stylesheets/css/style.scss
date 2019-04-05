@@ -4976,3 +4976,25 @@ p.user_data {
   display: flex;
   flex-wrap: wrap;
 }
+
+// Ajax message
+.ajax_message {
+  width: 30%;
+  height: 20%;
+  text-align: center;
+  position: fixed;
+  display: none;
+  top: 200px;
+  left: 50%;
+  background-color: #FFF;
+  opacity: 0.8;
+  border: solid 3px #95ccff;
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.ajax_comment {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+}

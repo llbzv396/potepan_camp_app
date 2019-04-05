@@ -70,3 +70,8 @@
 <% if controller.controller_name == 'products' %>
 <%= render partial: 'layouts/modal_quick_view', collection: @related_products, as: 'product' %>
 <% end %>
+
+<!-- Ajax message -->
+<div class='ajax_message'>
+  <div class="ajax_comment"></div>
+</div>

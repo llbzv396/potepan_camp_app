@@ -208,3 +208,10 @@ $('td.products_count_box').change(function(){
   })
   $('#count_update').attr("href", `${url}`)
 })
+
+// ==========AJAX=================-
+$(document).click(function(event) {
+  if(!$(event.target).closest('.ajax_message').length) {
+    $('.ajax_message').hide('slow');
+  }
+});

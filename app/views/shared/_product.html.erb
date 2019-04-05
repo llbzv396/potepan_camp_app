@@ -3,7 +3,7 @@
   <div class="productMasking">
     <ul class="list-inline btn-group" role="group">
       <li>
-        <%= link_to add_favorite_potepan_product_path(product.id), class: 'btn btn-default' do %>
+        <%= link_to add_favorite_potepan_product_path(product.id), remote: true, class: 'btn btn-default' do %>
           <i class="fa fa-heart"></i>
         <% end %>
       </li>

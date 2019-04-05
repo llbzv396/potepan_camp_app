@@ -38,12 +38,7 @@ class Potepan::OrdersController < ApplicationController
       orderedproduct.product_id = product.id
       orderedproduct.count = 1
     end
-
-    if orderedproduct.save
-      redirect_to potepan_order_path(order.id)
-    else
-      redirect_to potepan_order_path(order.id)
-    end
+    orderedproduct.save
   end
 
   def update

@@ -1,6 +1,7 @@
 class Potepan::OrdersController < ApplicationController
   helper_method :products_count
-  before_action :check_logged_in
+  before_action :check_logged_in, only: [:show, :update, :destroy, :step1, :step2, :step3, :complete, :data_set]
+  before_action :check_logged_in_for_ajax, only: [:create]
   def show
     @order = Potepan::Order.find(params[:id])
     product_ids = Potepan::OrderedProduct.where(order_id: params[:id]).pluck(:product_id)
@@ -146,6 +147,13 @@ class Potepan::OrdersController < ApplicationController
     unless logged_in?
       flash[:danger] = "ログインしてください"
       redirect_to potepan_path
+    end
+  end
+
+  def check_logged_in_for_ajax
+    unless logged_in?
+      flash[:danger] = "ログインしてください"
+      render :js => "window.location = '/potepan'"
     end
   end
 end

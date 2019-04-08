@@ -36,7 +36,7 @@ class Potepan::ProductsController < ApplicationController
   def check_logged_in
     unless logged_in?
       flash[:danger] = 'ログインしてください'
-      redirect_back(fallback_location: potepan_path)
+      render :js => "window.location = '/potepan'"
     end
   end
 end

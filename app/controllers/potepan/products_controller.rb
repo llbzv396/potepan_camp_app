@@ -33,6 +33,7 @@ class Potepan::ProductsController < ApplicationController
   end
 
   private
+
   def check_logged_in
     unless logged_in?
       flash[:danger] = 'ログインしてください'
